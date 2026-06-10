@@ -13,7 +13,7 @@ export default function SidebarArchive() {
     <aside className="hidden lg:flex flex-col fixed top-0 left-0 h-screen w-[280px] bg-[#000000] z-50 p-10 overflow-y-auto">
       
       {/* Identity / Brand */}
-      <div className="mb-8">
+      <div className="mb-12">
         <Link href="/">
           <h1 className="[font-family:var(--font-gotfridus)] uppercase text-4xl text-[var(--text)] leading-none tracking-tight hover:text-[var(--accent-green)] transition-colors cursor-pointer">
             ALTAIR
@@ -21,16 +21,16 @@ export default function SidebarArchive() {
             STAR
           </h1>
         </Link>
-        <p className="font-mono text-[10px] text-[var(--text-faint)] uppercase tracking-widest mt-4 mb-6">
+        <p className="font-mono text-xs text-[var(--text-faint)] uppercase tracking-widest mt-6 mb-6">
           {t.sidebar.portfolio}
         </p>
-        <p className="font-sans text-xs text-[var(--text-soft)] leading-relaxed">
+        <p className="font-sans text-sm text-[var(--text-soft)] leading-relaxed">
           {t.sidebar.desc}
         </p>
       </div>
 
       {/* Navigation Directory */}
-      <nav className="flex-1 flex flex-col gap-2 font-mono text-xs mb-8">
+      <nav className="flex-1 flex flex-col gap-4 font-mono text-sm mb-8">
         {[
           { id: "/me", icon: "👤", label: t.nav.about },
           { id: "/craft", icon: "🗂", label: t.nav.projects },
@@ -39,24 +39,24 @@ export default function SidebarArchive() {
           <Link
             key={item.id}
             href={item.id}
-            className="group flex items-center justify-between py-2 text-[var(--text-soft)] hover:text-[var(--accent-green)] transition-all"
+            className="group flex items-center justify-between py-3 px-4 -mx-4 border-l-2 border-transparent hover:border-[var(--accent-green)] hover:bg-[rgba(0,255,65,0.03)] text-[var(--text-soft)] hover:text-[var(--accent-green)] transition-all rounded-r"
           >
             <span className="group-hover:translate-x-1 transition-transform">
               {item.label}
             </span>
-            <span className="opacity-50 group-hover:opacity-100 transition-opacity">
+            <span className="opacity-40 group-hover:opacity-100 transition-opacity text-xl">
               {item.icon}
             </span>
           </Link>
         ))}
         <Link 
           href="/contact"
-          className="group flex items-center justify-between py-2 mt-4 text-[var(--text-soft)] hover:text-[var(--accent-magenta)] transition-all"
+          className="group flex items-center justify-between py-3 px-4 -mx-4 mt-4 border-l-2 border-transparent hover:border-[var(--accent-magenta)] hover:bg-[rgba(255,0,255,0.03)] text-[var(--text-soft)] hover:text-[var(--accent-magenta)] transition-all rounded-r"
         >
           <span className="group-hover:translate-x-1 transition-transform">
              {t.nav.contact}
           </span>
-          <span className="opacity-50 group-hover:opacity-100 transition-opacity">
+          <span className="opacity-40 group-hover:opacity-100 transition-opacity text-xl">
             ↗
           </span>
         </Link>
