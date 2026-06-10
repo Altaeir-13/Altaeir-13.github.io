@@ -4,66 +4,53 @@
 /* PALETA DE CORES / TOKENS VISUAIS */
 :root {
   /* Tema Claro (Light) */
-  --bg: #f5f2ea;
-  --bg-soft: #ebe6dc;
-  --surface: #fffaf0;
+  --bg: #f7f7fb;
+  --bg-soft: #ffffff;
+  --surface: #ffffff;
   --surface-elevated: #ffffff;
-
-  --text: #101010;
-  --text-soft: #2f2f2f;
-  --muted: #626262;
-
-  --border: rgba(0, 0, 0, 0.14);
-  --border-strong: rgba(0, 0, 0, 0.24);
-
-  --accent-green: #008f35;
-  --accent-green-strong: #006f2a;
-  --accent-green-soft: rgba(0, 143, 53, 0.12);
-
-  --accent-pink: #c2186a;
-  --accent-pink-strong: #9f0f55;
-  --accent-pink-soft: rgba(194, 24, 106, 0.12);
-
-  --accent-blue-shadow: #2458d3;
+  --text: #101114;
+  --text-soft: #2f3340;
+  --muted: #5f6678;
+  --border: rgba(16, 17, 20, 0.10);
+  --border-strong: rgba(16, 17, 20, 0.18);
+  --accent-pink: #ff2e88;
+  --accent-green: #2ee86f;
+  --accent-pink-soft: rgba(255, 46, 136, 0.12);
+  --accent-green-soft: rgba(46, 232, 111, 0.14);
+  --shadow-soft: 0 18px 45px rgba(16, 17, 20, 0.08);
+  --shadow-card: 0 12px 30px rgba(16, 17, 20, 0.10);
 
   /* Glassmorphism */
-  --glass-bg: rgba(245, 242, 234, 0.85);
+  --glass-bg: rgba(255, 255, 255, 0.85);
   --glass-blur: 20px;
 }
 
 [data-theme="dark"] {
   /* Tema Escuro (Dark) */
-  --bg: #000000;
-  --bg-soft: #050505;
-  --surface: #090909;
-  --surface-elevated: #111111;
-
-  --text: #ffffff;
-  --text-soft: #ececf1;
-  --muted: #9ca3af;
-
-  --border: rgba(255, 255, 255, 0.12);
-  --border-strong: rgba(255, 255, 255, 0.22);
-
-  --accent-green: #31e66f;
-  --accent-green-strong: #00ff41;
-  --accent-green-soft: rgba(49, 230, 111, 0.16);
-
-  --accent-pink: #ff2e9f;
-  --accent-pink-strong: #ff007f;
-  --accent-pink-soft: rgba(255, 46, 159, 0.18);
-
-  --accent-blue-shadow: #1f6fff;
+  --bg: #050509;
+  --bg-soft: #090912;
+  --surface: #101018;
+  --surface-elevated: #151520;
+  --text: #f5f7fb;
+  --text-soft: #d7dbe8;
+  --muted: #9aa3b8;
+  --border: rgba(255, 255, 255, 0.10);
+  --border-strong: rgba(255, 255, 255, 0.18);
+  --accent-pink: #ff4fa3;
+  --accent-green: #5cff95;
+  --accent-pink-soft: rgba(255, 79, 163, 0.16);
+  --accent-green-soft: rgba(92, 255, 149, 0.14);
+  --shadow-soft: 0 20px 60px rgba(0, 0, 0, 0.35);
+  --shadow-card: 0 18px 40px rgba(0, 0, 0, 0.28);
 
   /* Glassmorphism */
-  --glass-bg: rgba(0, 0, 0, 0.85);
+  --glass-bg: rgba(5, 5, 9, 0.85);
   --glass-blur: 20px;
 }
 
 @theme {
-  --font-sans: var(--font-commissioner), system-ui, sans-serif;
-  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
-  --font-display: var(--font-gotfridus), sans-serif;
+  --font-sans: var(--font-doto), system-ui, sans-serif;
+  --font-mono: var(--font-doto), ui-monospace, monospace;
   --color-background: var(--bg);
   --color-foreground: var(--text);
   --color-accent: var(--accent-pink);
@@ -77,20 +64,6 @@ body {
   transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease;
 }
 
-:focus-visible {
-  outline: 2px solid var(--accent-green);
-  outline-offset: 4px;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    scroll-behavior: auto !important;
-    transition-duration: 0.01ms !important;
-  }
-}
-
 /* ============================================================ */
 /* TIPOGRAFIA */
 /* ============================================================ */
@@ -99,10 +72,7 @@ body {
     font-family: var(--font-commissioner), sans-serif;
   }
   .font-mono {
-    font-family: var(--font-jetbrains-mono), monospace;
-  }
-  .font-display {
-    font-family: var(--font-gotfridus), sans-serif;
+    font-family: var(--font-commissioner), monospace;
   }
 }
 
@@ -110,41 +80,43 @@ body {
 /* COMPONENTES REUTILIZÁVEIS */
 /* ============================================================ */
 
+/* Header */
 @layer components {
-  /* Header */
   .header-container {
-    @apply fixed top-0 z-50 flex w-full items-center justify-between border-b px-6 py-4 backdrop-blur sm:px-10 transition-colors duration-200;
+    @apply fixed top-0 z-50 flex w-full items-center justify-between border-b px-6 py-5 backdrop-blur sm:px-10 transition-colors duration-200;
     border-color: var(--border);
     background-color: var(--glass-bg);
   }
 
   .header-logo {
-    @apply text-xl font-normal tracking-wide;
+    @apply text-lg font-extrabold uppercase tracking-tight;
     color: var(--text);
-    font-family: var(--font-display);
-    font-size: 32px;
+    font-family: var(--font-germania-one), sans-serif;
+    font-size: 35px;
   }
 
   .header-nav {
-    @apply hidden items-center gap-8 text-xs font-semibold uppercase tracking-[0.2em] md:flex;
+    @apply hidden items-center gap-8 text-xs font-semibold uppercase tracking-[0.3em] md:flex;
     color: var(--text-soft);
-    font-family: var(--font-mono);
+    font-family: var(--font-commissioner), sans-serif;
+    font-size: 15px;
   }
 
   .header-nav a {
     @apply transition-colors;
-    color: var(--text-soft);
+    color: var(--text);
   }
 
   .header-nav a:hover {
-    color: var(--accent-green);
+    color: var(--accent-pink);
   }
 
   /* Hero Section */
   .hero-container {
     @apply relative min-h-screen overflow-hidden;
-    background-color: #000000; /* Keeps hero dark even in light theme */
-    color: #ffffff;
+    background-color: #050509; /* Keeps hero dark even in light theme */
+    color: #f5f7fb;
+    font-family: var(--font-commissioner), sans-serif;
   }
 
   .hero-main {
@@ -160,14 +132,15 @@ body {
   }
 
   .hero-label {
-    @apply text-xs uppercase tracking-[0.2em] font-mono;
-    color: #9ca3af;
+    @apply text-xs uppercase tracking-[0.4em];
+    color: #9aa3b8; /* explicit dark mode text soft */
+    font-family: var(--font-commissioner), sans-serif;
   }
 
   .hero-title {
-    @apply flex flex-col gap-3 text-4xl font-normal uppercase leading-[0.9] tracking-tight sm:text-6xl lg:text-7xl xl:text-8xl;
-    color: #ffffff;
-    font-family: var(--font-display);
+    @apply flex flex-col gap-3 font-sans text-4xl font-extrabold uppercase leading-[0.9] tracking-tight sm:text-6xl lg:text-7xl xl:text-8xl;
+    color: #f5f7fb; /* Explicitly dark */
+    font-family: var(--font-germania-one), sans-serif;
   }
 
   .hero-title-line {
@@ -175,9 +148,10 @@ body {
   }
 
   .hero-CTA {
-    @apply inline-flex items-center gap-4 rounded-none px-6 py-3 text-sm font-semibold uppercase tracking-[0.15em] transition border border-transparent font-mono;
-    background-color: var(--accent-pink);
-    color: #ffffff;
+    @apply inline-flex items-center gap-4 rounded-full px-6 py-3 text-sm font-semibold uppercase tracking-[0.25em] transition;
+    background-color: #ffffff; /* Explicitly inverted for dark hero */
+    color: #050509;
+    font-family: var(--font-commissioner), sans-serif;
   }
 
   .hero-CTA svg {
@@ -185,21 +159,19 @@ body {
   }
 
   .hero-CTA:hover svg {
-    @apply translate-x-1;
+    @apply -translate-y-0.5 translate-x-0.5;
   }
 
   .hero-CTA:hover {
-    background-color: #000000;
-    color: var(--accent-pink);
-    border-color: var(--accent-pink);
-    box-shadow: 0 0 15px var(--accent-pink-soft);
+    background-color: var(--accent-pink);
+    color: #ffffff;
   }
 
   /* Accent Boxes */
   .accent-box-lime {
-    @apply flex h-12 w-12 items-center justify-center sm:h-16 sm:w-16 lg:h-20 lg:w-20 rounded-none;
+    @apply flex h-12 w-12 items-center justify-center sm:h-16 sm:w-16 lg:h-20 lg:w-20;
     background-color: var(--accent-green);
-    color: #000000;
+    color: #050509;
   }
 
   .accent-box-grid {
@@ -207,48 +179,55 @@ body {
   }
 
   .accent-box-grid span {
-    @apply rounded-none;
-    background-color: var(--accent-green);
+    @apply rounded-full;
+    background-color: #ffffff;
   }
 
   .accent-box-icon {
-    @apply inline-flex h-12 w-12 items-center justify-center sm:h-16 sm:w-16 lg:h-20 lg:w-20 rounded-none;
+    @apply inline-flex h-12 w-12 items-center justify-center rounded-[22px] sm:h-16 sm:w-16 lg:h-20 lg:w-20;
     background-color: var(--accent-pink);
     color: #ffffff;
   }
 
   .hero-accent-text {
     color: var(--accent-green);
-    font-family: var(--font-mono);
   }
 
-  /* Project Card */
-  .project-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
+  /* Footer Info */
+  .hero-footer {
+    @apply mt-14 grid grid-cols-1 gap-6 text-xs uppercase tracking-[0.35em] sm:grid-cols-2;
+    color: var(--muted);
+  }
+
+  /* Card */
+  .card-container {
+    @apply rounded-2xl border p-8 transition-all duration-200;
+    background-color: var(--surface);
+    border-color: var(--border);
+    box-shadow: var(--shadow-card);
+    font-family: var(--font-commissioner), sans-serif;
+  }
+
+  .card-container:hover {
+    border-color: var(--accent-pink);
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .card-label {
+    @apply text-xs uppercase tracking-widest;
+    color: var(--muted);
+    font-family: var(--font-commissioner), sans-serif;
+  }
+
+  .card-title {
+    @apply mt-2 text-2xl font-bold tracking-tighter group-hover:text-[var(--accent-pink)] transition-colors;
     color: var(--text);
-    padding: 24px;
-    border-radius: 0;
-    transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+    font-family: var(--font-commissioner), sans-serif;
   }
 
-  .project-card:hover {
-    border-color: var(--accent-green);
-    box-shadow: 0 0 28px var(--accent-green-soft);
-    transform: translateY(-2px);
-  }
-
-  /* Badge */
-  .badge {
-    display: inline-flex;
-    align-items: center;
-    border: 1px solid var(--border);
-    background: var(--surface-elevated);
-    color: var(--text-soft);
-    padding: 6px 10px;
-    font-family: var(--font-mono);
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
+  .card-arrow {
+    @apply mt-20 flex justify-end text-2xl transition-colors;
+    color: var(--text);
   }
 }

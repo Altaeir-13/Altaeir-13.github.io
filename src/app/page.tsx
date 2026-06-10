@@ -9,7 +9,7 @@ import SkillBadge from "@/components/SkillBadge";
 import { useLocale } from "@/context/LocaleContext";
 
 export default function Home() {
-  const { t, locale } = useLocale();
+  const { t } = useLocale();
   const heroRef = useRef<HTMLDivElement>(null);
   const [animationKey, setAnimationKey] = useState(0);
 
@@ -54,16 +54,9 @@ export default function Home() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6 }}
-                  className="hero-label flex flex-col gap-4"
+                  className="hero-label"
                 >
-                  <span className="text-[var(--accent-pink)]">[{t.hero.labelTop}]</span>
-                  <div className="font-mono text-[10px] text-[var(--muted)] flex flex-col border-l border-[var(--border-strong)] pl-4 lowercase">
-                    <span><span className="text-[var(--accent-green)]">host:</span> randerson de sá</span>
-                    <span><span className="text-[var(--accent-green)]">role:</span> {locale === 'pt' ? 'desenvolvedor em formação' : 'developer in training'}</span>
-                    <span><span className="text-[var(--accent-green)]">focus:</span> flutter, supabase, postgresql</span>
-                    <span><span className="text-[var(--accent-green)]">stack:</span> dart, typescript, python, sql</span>
-                    <span><span className="text-[var(--accent-green)]">status:</span> {locale === 'pt' ? 'aberto a estágios' : 'open to internships'}</span>
-                  </div>
+                  {t.hero.labelTop}
                 </motion.span>
                 <div className="hero-title text-white">
                   <div className="hero-title-line">
@@ -113,20 +106,20 @@ export default function Home() {
         </div>
       </div>
 
-      <section id="sobre" className="relative z-10 bg-background text-foreground pt-20 pb-10 px-6 sm:px-10 lg:px-20 border-t border-[var(--border)]">
+      <section id="sobre" className="relative z-10 bg-background text-foreground pt-20 pb-10 px-6 sm:px-10 lg:px-20 -mt-[20vh] rounded-t-[3rem] shadow-[0_-20px_50px_rgba(0,0,0,0.5)]">
         <div className="max-w-6xl mx-auto mt-10">
           <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.8 }}>
-            <h1 className="text-5xl md:text-7xl font-normal uppercase tracking-tighter text-[var(--text)] font-display">
-              /{t.nav.about.toLowerCase()}/randerson
+            <h1 className="text-5xl md:text-7xl font-black uppercase tracking-tighter" style={{ fontFamily: 'var(--font-germania-one)' }}>
+              {t.about.heading}
             </h1>
-            <h2 className="text-2xl md:text-3xl text-[var(--text-soft)] font-mono mt-6 max-w-3xl border-l-2 border-[var(--accent-green)] pl-4">
+            <h2 className="text-2xl md:text-3xl text-[var(--text-soft)] font-sans mt-4 max-w-3xl">
               {t.about.subheading}
             </h2>
-            <div className="flex gap-4 mt-10 flex-wrap">
-              <a href="https://github.com/Altaeir-13" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 bg-[var(--surface-elevated)] border border-[var(--border-strong)] text-[var(--text)] px-6 py-3 rounded-none hover:border-[var(--accent-pink)] hover:text-[var(--accent-pink)] transition-all font-mono uppercase tracking-wider text-xs shadow-sm hover:shadow-[0_0_15px_var(--accent-pink-soft)]">
+            <div className="flex gap-4 mt-8 flex-wrap">
+              <a href="https://github.com/Altaeir-13" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 bg-[var(--surface-elevated)] border border-[var(--border-strong)] text-[var(--text)] px-6 py-3 rounded-full hover:border-[var(--accent-pink)] hover:text-[var(--accent-pink)] transition-all font-bold uppercase tracking-wider text-xs shadow-sm hover:shadow-[var(--shadow-soft)]">
                 <Github className="w-4 h-4" /> GitHub
               </a>
-              <a href="https://linkedin.com/in/randersonsousa" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 bg-[var(--surface-elevated)] border border-[var(--border-strong)] text-[var(--text)] px-6 py-3 rounded-none hover:border-[var(--accent-pink)] hover:text-[var(--accent-pink)] transition-all font-mono uppercase tracking-wider text-xs shadow-sm hover:shadow-[0_0_15px_var(--accent-pink-soft)]">
+              <a href="https://linkedin.com/in/randersonsousa" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 bg-[var(--surface-elevated)] border border-[var(--border-strong)] text-[var(--text)] px-6 py-3 rounded-full hover:border-[var(--accent-pink)] hover:text-[var(--accent-pink)] transition-all font-bold uppercase tracking-wider text-xs shadow-sm hover:shadow-[var(--shadow-soft)]">
                 <Linkedin className="w-4 h-4" /> LinkedIn
               </a>
             </div>
@@ -143,13 +136,7 @@ export default function Home() {
 
       <section id="projetos" className="bg-background text-foreground py-20 px-6 sm:px-10 lg:px-20 border-t border-[var(--border)]">
         <div className="max-w-6xl mx-auto">
-          <div className="mb-12">
-            <h2 className="text-4xl md:text-5xl font-normal uppercase tracking-tighter text-[var(--text)] font-display">/{t.nav.projects.toLowerCase()}/log</h2>
-            <div className="flex items-center gap-2 mt-6">
-              <div className="h-1.5 w-16 bg-gradient-to-r from-[var(--accent-pink)] to-[var(--accent-green)] rounded-none"></div>
-              <span className="font-mono text-xs text-[var(--muted)] opacity-50">sys.log</span>
-            </div>
-          </div>
+          <SectionHeading title={t.projects.title} subtitle={t.projects.subtitle} />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {t.projects.list.map((proj, idx) => (
               <ProjectCard key={idx} {...proj} statusLabel={t.projects.statusLabel} contributionsLabel={t.projects.contributionsLabel} />
@@ -160,17 +147,11 @@ export default function Home() {
 
       <section id="habilidades" className="bg-background text-foreground py-20 px-6 sm:px-10 lg:px-20 border-t border-[var(--border)]">
         <div className="max-w-6xl mx-auto">
-          <div className="mb-12">
-            <h2 className="text-4xl md:text-5xl font-normal uppercase tracking-tighter text-[var(--text)] font-display">/{t.nav.skills.toLowerCase()}/directories</h2>
-            <div className="flex items-center gap-2 mt-6">
-              <div className="h-1.5 w-16 bg-gradient-to-r from-[var(--accent-pink)] to-[var(--accent-green)] rounded-none"></div>
-              <span className="font-mono text-xs text-[var(--muted)] opacity-50">sys.log</span>
-            </div>
-          </div>
+          <SectionHeading title={t.skills.title} subtitle={t.skills.subtitle} />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
             {t.skills.groups.map((group, idx) => (
               <div key={idx} className="flex flex-col gap-4">
-                <h3 className="font-mono text-sm font-bold tracking-widest text-[var(--accent-green)] border-b border-[var(--border-strong)] pb-2 mb-2">/{group.title.toLowerCase()}</h3>
+                <h3 className="text-xl font-bold uppercase tracking-widest text-[var(--accent-pink)]">{group.title}</h3>
                 <div className="flex flex-wrap gap-2">
                   {group.skills.map(skill => (
                     <SkillBadge key={skill} skill={skill} />
@@ -185,17 +166,11 @@ export default function Home() {
       <section id="experiencia" className="bg-[var(--bg-soft)] text-foreground py-20 px-6 sm:px-10 lg:px-20 border-t border-[var(--border)]">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-20">
           <div>
-            <div className="mb-12">
-              <h2 className="text-4xl md:text-5xl font-normal uppercase tracking-tighter text-[var(--text)] font-display">/log/{t.nav.experience.toLowerCase()}</h2>
-              <div className="flex items-center gap-2 mt-6">
-                <div className="h-1.5 w-16 bg-gradient-to-r from-[var(--accent-pink)] to-[var(--accent-green)] rounded-none"></div>
-                <span className="font-mono text-xs text-[var(--muted)] opacity-50">sys.log</span>
-              </div>
-            </div>
-            <div className="space-y-12 font-sans">
+            <SectionHeading title={t.experience.title} />
+            <div className="space-y-12">
               {t.experience.jobs.map((job, idx) => (
-                <div key={idx} className="border-l border-[var(--accent-green)] pl-6 relative">
-                  <div className="absolute w-2 h-2 bg-[var(--accent-pink)] -left-[4px] top-2"></div>
+                <div key={idx} className="border-l-2 border-[var(--border-strong)] pl-6 relative">
+                  <div className="absolute w-4 h-4 rounded-full bg-[var(--accent-pink)] -left-[9px] top-1"></div>
                   <h3 className="text-2xl font-bold font-sans text-[var(--text)]">{job.title}</h3>
                   <h4 className="text-lg text-[var(--text-soft)] mb-2">{job.company}</h4>
                   <p className="text-sm font-bold uppercase tracking-widest text-[var(--muted)] mb-4">{job.period}</p>
@@ -211,16 +186,10 @@ export default function Home() {
           </div>
 
           <div id="formacao">
-            <div className="mb-12">
-              <h2 className="text-4xl md:text-5xl font-normal uppercase tracking-tighter text-[var(--text)] font-display">/log/{t.nav.education.toLowerCase()}</h2>
-              <div className="flex items-center gap-2 mt-6">
-                <div className="h-1.5 w-16 bg-gradient-to-r from-[var(--accent-pink)] to-[var(--accent-green)] rounded-none"></div>
-                <span className="font-mono text-xs text-[var(--muted)] opacity-50">sys.log</span>
-              </div>
-            </div>
-            <div className="space-y-12 font-sans">
-              <div className="border-l border-[var(--accent-green)] pl-6 relative">
-                <div className="absolute w-2 h-2 bg-[var(--accent-pink)] -left-[4px] top-2"></div>
+            <SectionHeading title={t.education.title} />
+            <div className="space-y-12">
+              <div className="border-l-2 border-[var(--border-strong)] pl-6 relative">
+                <div className="absolute w-4 h-4 rounded-full bg-[var(--text)] -left-[9px] top-1"></div>
                 <h3 className="text-2xl font-bold font-sans text-[var(--text)]">{t.education.degree}</h3>
                 <h4 className="text-lg text-[var(--text-soft)] mb-2">{t.education.institution}</h4>
                 <p className="text-sm font-bold uppercase tracking-widest text-[var(--muted)] mb-4">{t.education.period}</p>
@@ -242,28 +211,19 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="contato" className="bg-black border-t border-[var(--border)] text-foreground py-32 px-6 sm:px-10 lg:px-20">
-        <div className="max-w-4xl mx-auto bg-[var(--surface)] p-8 md:p-12 border border-[var(--border)] shadow-[0_0_20px_var(--accent-green-soft)] rounded-none relative">
-          <div className="absolute top-0 left-0 w-full h-8 bg-[var(--surface-elevated)] border-b border-[var(--border)] flex items-center px-4 gap-2">
-            <div className="w-3 h-3 rounded-full bg-red-500"></div>
-            <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-            <div className="w-3 h-3 rounded-full bg-green-500"></div>
-            <span className="ml-4 font-mono text-[10px] text-[var(--muted)]">bash - randerson</span>
-          </div>
-          <div className="mt-8 text-left">
-            <h2 className="text-xl md:text-2xl font-mono tracking-tighter mb-8 text-[var(--accent-green)]"><span className="text-[var(--accent-pink)]">www.randerson.dev:~$</span> {t.nav.contact.toLowerCase()} --open</h2>
-            <p className="text-lg text-[var(--text-soft)] mb-12 font-mono">
-              {"> "} {t.contact.subtitle}
-              <span className="animate-pulse ml-1 inline-block w-2 h-4 bg-[var(--accent-green)] align-middle"></span>
-            </p>
-            <div className="flex flex-col sm:flex-row gap-6 font-mono">
-              <a href="mailto:randerson.sdsn@gmail.com" className="flex items-center justify-center gap-3 border border-[var(--accent-pink)] text-[var(--accent-pink)] hover:bg-[var(--accent-pink)] hover:text-white px-8 py-4 rounded-none transition-all text-xs font-bold uppercase tracking-widest shadow-[0_0_10px_var(--accent-pink-soft)]">
-                <Mail className="w-4 h-4" /> {t.contact.emailBtn}
-              </a>
-              <button onClick={copyEmail} className="flex items-center justify-center gap-3 bg-transparent border border-[var(--accent-green)] text-[var(--accent-green)] hover:bg-[var(--accent-green)] hover:text-black px-8 py-4 rounded-none transition-all text-xs font-bold uppercase tracking-widest shadow-[0_0_10px_var(--accent-green-soft)]">
-                <Copy className="w-4 h-4" /> {t.contact.copyBtn}
-              </button>
-            </div>
+      <section id="contato" className="bg-[var(--bg-soft)] border-t border-[var(--border)] text-foreground py-32 px-6 sm:px-10 lg:px-20">
+        <div className="max-w-4xl mx-auto text-center bg-[var(--surface)] p-12 rounded-3xl border border-[var(--border)] shadow-[var(--shadow-card)]">
+          <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter mb-8 text-[var(--text)]" style={{ fontFamily: 'var(--font-germania-one)' }}>{t.contact.title}</h2>
+          <p className="text-xl text-[var(--text-soft)] mb-12">
+            {t.contact.subtitle}
+          </p>
+          <div className="flex flex-col sm:flex-row justify-center gap-6">
+            <a href="mailto:randerson.sdsn@gmail.com" className="flex items-center justify-center gap-3 bg-gradient-to-r from-[var(--accent-pink)] to-[var(--accent-green)] text-[#050509] px-8 py-4 rounded-full hover:scale-105 transition-transform font-bold uppercase tracking-widest shadow-lg shadow-[var(--accent-pink-soft)]">
+              <Mail className="w-5 h-5" /> {t.contact.emailBtn}
+            </a>
+            <button onClick={copyEmail} className="flex items-center justify-center gap-3 bg-[var(--surface-elevated)] border border-[var(--border-strong)] text-[var(--text)] px-8 py-4 rounded-full hover:border-[var(--accent-pink)] hover:text-[var(--accent-pink)] transition-all font-bold uppercase tracking-widest shadow-sm">
+              <Copy className="w-5 h-5" /> {t.contact.copyBtn}
+            </button>
           </div>
         </div>
       </section>

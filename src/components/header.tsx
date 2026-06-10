@@ -18,12 +18,12 @@ export default function Header() {
         Randerson de Sá
       </div>
       <nav className="header-nav flex items-center gap-6">
-        <a href="#sobre">/{t.nav.about.toLowerCase()}</a>
-        <a href="#projetos">/{t.nav.projects.toLowerCase()}</a>
-        <a href="#habilidades">/{t.nav.skills.toLowerCase()}</a>
-        <a href="#experiencia">/{t.nav.experience.toLowerCase()}</a>
-        <a href="#formacao">/{t.nav.education.toLowerCase()}</a>
-        <a href="#contato">/{t.nav.contact.toLowerCase()}</a>
+        <a href="#sobre">{t.nav.about}</a>
+        <a href="#projetos">{t.nav.projects}</a>
+        <a href="#habilidades">{t.nav.skills}</a>
+        <a href="#experiencia">{t.nav.experience}</a>
+        <a href="#formacao">{t.nav.education}</a>
+        <a href="#contato">{t.nav.contact}</a>
 
         <div className="flex items-center gap-4 ml-4 pl-4 border-l border-[var(--border)]">
           <button 

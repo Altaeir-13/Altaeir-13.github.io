@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import { Doto, Young_Serif, Germania_One, Commissioner, JetBrains_Mono} from 'next/font/google';
+import { Doto, Young_Serif, Germania_One, Commissioner} from 'next/font/google';
 import "./globals.css";
 import Header from "@/components/header";
 import { LocaleProvider } from "@/context/LocaleContext";
@@ -36,12 +36,6 @@ const commissioner = Commissioner({
   subsets: ['latin'],
   variable: "--font-commissioner",
   weight: "400",
-  display: "swap",
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ['latin'],
-  variable: "--font-jetbrains-mono",
   display: "swap",
 });
 // --- FAMÍLIAS DE FONTES LOCAIS ---
@@ -97,8 +91,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           ${germaniaOne.variable}
           ${gotfridus.variable}
           ${youngSerif.variable}
-          ${commissioner.variable}
-          ${jetbrainsMono.variable}
+          ${ commissioner.variable }
           bg-background text-foreground antialiased font-sans
         `}
       >
