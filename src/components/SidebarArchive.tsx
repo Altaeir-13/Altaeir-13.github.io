@@ -9,7 +9,7 @@ export default function SidebarArchive() {
   const { theme, toggleTheme } = useTheme()
 
   return (
-    <aside className="hidden lg:flex flex-col fixed top-0 left-0 h-screen w-[280px] border-r border-[var(--border)] bg-[var(--surface)] z-50 p-8 overflow-y-auto">
+    <aside className="hidden lg:flex flex-col fixed top-0 left-0 h-screen w-[280px] bg-[#000000] z-50 p-10 overflow-y-auto">
       
       {/* Identity / Brand */}
       <div className="mb-8">
