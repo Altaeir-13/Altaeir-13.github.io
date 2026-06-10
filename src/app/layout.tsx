@@ -8,7 +8,7 @@ import { ThemeProvider } from "@/context/ThemeContext";
 
 export const metadata: Metadata = {
   title: "Randerson de Sá | Portfólio",
-  description: "Portfólio de Randerson de Sá, graduando em Ciência da Computação com foco em Flutter, Supabase, PostgreSQL, React, TypeScript, Python, dados e IA aplicada.",
+  description: "Portfólio de Randerson de Sá, estudante de Ciência da Computação com foco em Flutter, Supabase, PostgreSQL, Next.js, React, Python, dados e IA aplicada.",
 };
 
 const doto = Doto({
