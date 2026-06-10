@@ -1,54 +1,36 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import { Doto, Young_Serif, Germania_One, Commissioner} from 'next/font/google';
+import { Inter, JetBrains_Mono, EB_Garamond } from 'next/font/google';
 import "./globals.css";
-import Header from "@/components/header";
 import { LocaleProvider } from "@/context/LocaleContext";
 import { ThemeProvider } from "@/context/ThemeContext";
+import SidebarArchive from "@/components/SidebarArchive";
+import MobileHeader from "@/components/MobileHeader";
 
 export const metadata: Metadata = {
   title: "Randerson de Sá | Portfólio",
-  description: "Portfólio de Randerson de Sá, graduando em Ciência da Computação com foco em Flutter, Supabase, PostgreSQL, React, TypeScript, Python, dados e IA aplicada.",
+  description: "Portfólio de Randerson de Sá, graduando em Ciência da Computação com foco em mobile, backend, dados e IA aplicada.",
 };
 
-const doto = Doto({
+const inter = Inter({
   subsets: ['latin'],
-  variable: "--font-doto",
-  weight: "900",
+  variable: "--font-inter",
   display: "swap",
 });
 
-const youngSerif = Young_Serif({
+const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
-  variable: "--font-young-serif",
-  weight: "400",
-  display: "swap"
-});
-
-const germaniaOne = Germania_One({
-  subsets: ['latin'],
-  variable: "--font-germania-one",
-  weight: "400",
+  variable: "--font-jetbrains",
   display: "swap",
 });
 
-const commissioner = Commissioner({
+const ebGaramond = EB_Garamond({
   subsets: ['latin'],
-  variable: "--font-commissioner",
-  weight: "400",
+  variable: "--font-garamond",
   display: "swap",
 });
+
 // --- FAMÍLIAS DE FONTES LOCAIS ---
-
-const bounded = localFont({
-  src: [
-    { path: "./fonts/bounded/Bounded-ExtraLight.ttf", weight: "200" },
-    { path: "./fonts/bounded/Bounded-Regular.ttf", weight: "400" },
-    { path: "./fonts/bounded/Bounded-Black.ttf", weight: "900" },
-  ],
-  variable: "--font-bounded",
-});
-
 const gotfridus = localFont({
   src: "./fonts/gotfridus/Gotfridus.ttf",
   variable: "--font-gotfridus",
@@ -86,19 +68,22 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body
         className={`
-          ${doto.variable}
-          ${bounded.variable}
-          ${germaniaOne.variable}
+          ${inter.variable}
+          ${jetbrainsMono.variable}
+          ${ebGaramond.variable}
           ${gotfridus.variable}
-          ${youngSerif.variable}
-          ${ commissioner.variable }
           bg-background text-foreground antialiased font-sans
         `}
       >
         <LocaleProvider>
           <ThemeProvider>
-            <Header />
-            {children}
+            <div className="flex flex-col lg:flex-row min-h-screen bg-noise">
+              <MobileHeader />
+              <SidebarArchive />
+              <main className="flex-1 w-full lg:ml-[280px] overflow-hidden">
+                {children}
+              </main>
+            </div>
           </ThemeProvider>
         </LocaleProvider>
       </body>

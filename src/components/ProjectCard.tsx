@@ -1,5 +1,4 @@
 "use client"
-import { motion } from "framer-motion"
 import { ArrowUpRight, Github } from "lucide-react"
 
 interface ProjectProps {
@@ -13,69 +12,72 @@ interface ProjectProps {
   linkGithub?: string;
   statusLabel?: string;
   contributionsLabel?: string;
+  index: string;
 }
 
-export default function ProjectCard({ title, status, type, description, technologies, contributions, linkDeploy, linkGithub, statusLabel, contributionsLabel }: ProjectProps) {
-  const isMainProject = title.includes("FADIR") || title.includes("SAMU") || title.includes("Adoção");
+export default function ProjectCard({ 
+  title, 
+  status, 
+  type, 
+  description, 
+  technologies, 
+  contributions, 
+  linkDeploy, 
+  linkGithub, 
+  statusLabel, 
+  contributionsLabel,
+  index 
+}: ProjectProps) {
+  
+  const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
 
   return (
-    <motion.div
-      whileHover={{ y: -5 }}
-      className={`card-container group flex flex-col h-full cursor-default relative overflow-hidden ${isMainProject ? 'border-[var(--accent-pink)] border-opacity-50' : ''}`}
-    >
-      {isMainProject && (
-        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[var(--accent-pink)] to-[var(--accent-green)] opacity-80" />
-      )}
-      <div className="flex justify-between items-start mb-4">
-        <span className="card-label">{type}</span>
-        <div className="flex items-center gap-2">
-          {statusLabel && <span className="text-xs text-[var(--text-soft)] font-bold">{statusLabel}</span>}
-          <span className="text-[10px] uppercase tracking-widest px-2 py-1 border border-[var(--border-strong)] rounded-full font-bold text-[var(--text)] bg-[var(--surface-elevated)]">
-            {status}
-          </span>
-        </div>
+    <div className="project-card flex flex-col h-full" data-index={index}>
+      <div className="font-mono text-xs text-[var(--accent-magenta)] mb-6 truncate">
+        /project/{slug}
       </div>
-      <h3 className="card-title mb-4">{title}</h3>
-      <p className="text-sm text-[var(--text-soft)] mb-6">{description}</p>
       
-      <div className="mb-6 flex-grow">
-        <h4 className="text-xs font-bold uppercase tracking-widest mb-2 text-[var(--text)]">{contributionsLabel || "Principais Contribuições:"}</h4>
-        <ul className="list-disc list-inside text-sm text-[var(--muted)] space-y-1">
+      <div className="font-mono text-xs text-[var(--text-soft)] space-y-1 mb-6">
+        <p><strong className="text-[var(--text)]">{statusLabel || "Status:"}</strong> {status}</p>
+        <p><strong className="text-[var(--text)]">Type:</strong> {type}</p>
+        <p className="leading-snug"><strong className="text-[var(--text)]">Stack:</strong> {technologies.join(" · ")}</p>
+      </div>
+
+      <h3 className="font-sans font-bold text-xl mb-4 text-[var(--text)]">{title}</h3>
+      <p className="font-sans text-sm text-[var(--text-muted)] mb-8 flex-grow">{description}</p>
+      
+      <div className="mb-8">
+        <p className="font-mono text-xs text-[var(--text)] mb-2 uppercase tracking-widest">
+          {contributionsLabel || "Contributions:"}
+        </p>
+        <ul className="list-disc list-inside text-sm text-[var(--text-soft)] space-y-1 font-sans">
           {contributions.map((item, idx) => (
-            <li key={idx} className="leading-snug text-xs">{item}</li>
+            <li key={idx} className="leading-relaxed">{item}</li>
           ))}
         </ul>
       </div>
 
-      <div className="flex flex-wrap gap-2 mb-6 mt-auto">
-        {technologies.map((tech) => (
-          <span key={tech} className="text-[10px] font-bold uppercase tracking-wider bg-[var(--accent-pink-soft)] text-[var(--accent-pink)] border border-[var(--accent-pink)] border-opacity-20 px-2 py-1 rounded">
-            {tech}
-          </span>
-        ))}
-      </div>
-
-      <div className="flex gap-4 pt-4 border-t border-[var(--border)] mt-auto">
+      <div className="flex gap-6 mt-auto pt-4 border-t border-[var(--border-strong)] font-mono text-xs">
         {linkDeploy ? (
-          <a href={linkDeploy} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-sm font-bold text-[var(--text)] hover:text-[var(--accent-pink)] transition-colors">
-            Deploy <ArrowUpRight className="w-4 h-4" />
+          <a href={linkDeploy} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-[var(--text)] hover:text-[var(--accent-green)] transition-colors">
+            Deploy <ArrowUpRight className="w-3 h-3" />
           </a>
         ) : (
-           <span className="flex items-center gap-1 text-sm font-bold text-[var(--muted)] cursor-not-allowed">
-            Deploy <ArrowUpRight className="w-4 h-4" />
+           <span className="flex items-center gap-2 text-[var(--text-faint)] cursor-not-allowed">
+            Deploy <ArrowUpRight className="w-3 h-3" />
           </span>
         )}
         
         {linkGithub ? (
-          <a href={linkGithub} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-sm font-bold text-[var(--text)] hover:text-[var(--accent-pink)] transition-colors">
-            GitHub <Github className="w-4 h-4" />
+          <a href={linkGithub} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-[var(--text)] hover:text-[var(--accent-green)] transition-colors">
+            GitHub <Github className="w-3 h-3" />
           </a>
         ) : (
-           <span className="flex items-center gap-1 text-sm font-bold text-[var(--muted)] cursor-not-allowed">
-            GitHub <Github className="w-4 h-4" />
+           <span className="flex items-center gap-2 text-[var(--text-faint)] cursor-not-allowed">
+            GitHub <Github className="w-3 h-3" />
           </span>
         )}
       </div>
-    </motion.div>
+    </div>
   )
-}
+}
