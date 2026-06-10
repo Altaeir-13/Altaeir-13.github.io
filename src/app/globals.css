@@ -28,6 +28,9 @@
   --accent-magenta-soft: rgba(255, 46, 159, 0.18);
   --accent-magenta-glow: rgba(255, 46, 159, 0.34);
 
+  --terminal-green: #00ff41;
+  --terminal-pink: #ff2e9f;
+
   --accent-blue-shadow: #1f6fff;
   --paper: #f5f2ea;
 
@@ -99,6 +102,10 @@ body {
     letter-spacing: 0.02em;
   }
   
+  .font-typewriter {
+    font-family: "Courier Prime", "Courier New", "Nimbus Mono PS", "Liberation Mono", monospace;
+  }
+
   .font-mono {
     font-family: var(--font-mono);
   }
