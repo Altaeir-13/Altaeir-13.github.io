@@ -1,0 +1,206 @@
+@import "tailwindcss";
+
+/* ============================================================ */
+/* DESIGN SYSTEM - Cores, Tipografia e Estilos Centralizados   */
+/* ============================================================ */
+
+/* PALETA DE CORES */
+:root {
+  /* Cores Base */
+  --bg-primary: #000000;
+  --bg-secondary: #f1f1f1;
+  --text-primary: #ffffff;
+  --text-secondary: #4a4a4a;
+  --text-muted: #00b900;
+
+  /* Cores de Destaque */
+  --accent-color: #fc0077;
+  --accent-black: #000000;
+  --accent-white: #ffffff;
+
+  /* Borders e Dividers */
+  --border-light: rgba(0, 0, 0, 0.1);
+  --border-dark: rgba(0, 0, 0, 0.2);
+
+  /* Glassmorphism */
+  --glass-bg: #000000;
+  --glass-blur: 100px;
+}
+
+@theme {
+  --font-sans: var(--font-doto), system-ui, sans-serif;
+  --font-mono: var(--font-doto), ui-monospace, monospace;
+  --color-background: var(--bg-primary);
+  --color-foreground: var(--text-primary);
+  --color-accent: var(--accent-color);
+}
+
+
+
+
+/* BODY PADRÃO */
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-commissioner), sans-serif;
+}
+
+/* ============================================================ */
+/* TIPOGRAFIA */
+/* ============================================================ */
+@layer base {
+  .font-sans {
+    font-family: var(--font-commissioner), sans-serif;
+  }
+  .font-mono {
+    font-family: var(--font-commissioner), monospace;
+  }
+}
+
+/* ============================================================ */
+/* COMPONENTES REUTILIZÁVEIS */
+/* ============================================================ */
+
+/* Header */
+@layer components {
+  .header-container {
+    @apply fixed top-0 z-50 flex w-full items-center justify-between border-b px-6 py-5 backdrop-blur sm:px-10;
+    border-color: var(--border-light);
+    background-color: var(--glass-bg);
+  }
+
+  .header-logo {
+    @apply text-lg font-extrabold uppercase tracking-tight;
+    color: var(--text-primary);
+    font-family: var(--font-germania-one), sans-serif;
+    font-size: 35px;
+  }
+
+  .header-nav {
+    @apply hidden items-center gap-8 text-xs font-semibold uppercase tracking-[0.3em] md:flex;
+    color: var(--text-secondary);
+    font-family: var(--font-commissioner), sans-serif;
+    font-size: 15px;
+  }
+
+  .header-nav a {
+    @apply transition;
+    color: var(--text-primary);
+  }
+
+  .header-nav a:hover {
+    color: var(--accent-color);
+  }
+
+  /* Hero Section */
+  .hero-container {
+    @apply relative min-h-screen overflow-hidden;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-commissioner), sans-serif;
+  }
+
+  .hero-main {
+    @apply relative mx-auto flex min-h-screen w-full max-w-7xl flex-col justify-center px-6 pb-24 pt-32 sm:px-10 lg:px-16;
+  }
+
+  .hero-section {
+    @apply flex flex-wrap items-center justify-between gap-10;
+  }
+
+  .hero-content {
+    @apply flex flex-col gap-6;
+  }
+
+  .hero-label {
+    @apply text-xs uppercase tracking-[0.4em];
+    color: var(--text-muted);
+    font-family: var(--font-commissioner), sans-serif;
+  }
+
+  .hero-title {
+    @apply flex flex-col gap-3 font-sans text-4xl font-extrabold uppercase leading-[0.9] tracking-tight sm:text-6xl lg:text-7xl xl:text-8xl;
+    color: var(--text-primary);
+    font-family: var(--font-germania-one), sans-serif;
+  }
+
+  .hero-title-line {
+    @apply flex items-center gap-3 whitespace-nowrap;
+  }
+
+  .hero-CTA {
+    @apply inline-flex items-center gap-4 rounded-full px-6 py-3 text-sm font-semibold uppercase tracking-[0.25em] transition;
+    background-color: var(--accent-black);
+    color: var(--accent-white);
+    font-family: var(--font-commissioner), sans-serif;
+  }
+
+  .hero-CTA svg {
+    @apply h-4 w-4 transition;
+  }
+
+  .hero-CTA:hover svg {
+    @apply -translate-y-0.5 translate-x-0.5;
+  }
+
+  /* Accent Boxes */
+  .accent-box-lime {
+    @apply flex h-12 w-12 items-center justify-center sm:h-16 sm:w-16 lg:h-20 lg:w-20;
+    background-color: var(--accent-color);
+    color: var(--accent-black);
+  }
+
+  .accent-box-grid {
+    @apply grid h-12 w-12 grid-cols-2 gap-1 sm:h-16 sm:w-16 lg:h-20 lg:w-20;
+  }
+
+  .accent-box-grid span {
+    @apply rounded-full;
+    background-color: var(--accent-white);
+  }
+
+  .accent-box-icon {
+    @apply inline-flex h-12 w-12 items-center justify-center rounded-[22px] sm:h-16 sm:w-16 lg:h-20 lg:w-20;
+    background-color: var(--accent-white);
+    color: var(--accent-color);
+  }
+
+  .hero-accent-text {
+    color: var(--accent-color);
+  }
+
+  /* Footer Info */
+  .hero-footer {
+    @apply mt-14 grid grid-cols-1 gap-6 text-xs uppercase tracking-[0.35em] sm:grid-cols-2;
+    color: var(--text-muted);
+  }
+
+  /* Card */
+  .card-container {
+    @apply rounded-2xl border p-8 transition-colors;
+    background-color: var(--bg-secondary);
+    border-color: var(--border-light);
+    font-family: var(--font-commissioner), sans-serif;
+  }
+
+  .card-container:hover {
+    border-color: var(--border-dark);
+  }
+
+  .card-label {
+    @apply text-xs uppercase tracking-widest;
+    color: var(--text-muted);
+    font-family: var(--font-commissioner), sans-serif;
+  }
+
+  .card-title {
+    @apply mt-2 text-2xl font-bold tracking-tighter group-hover:underline;
+    color: var(--text-primary);
+    font-family: var(--font-commissioner), sans-serif;
+  }
+
+  .card-arrow {
+    @apply mt-20 flex justify-end text-2xl;
+    color: var(--text-primary);
+  }
+}
