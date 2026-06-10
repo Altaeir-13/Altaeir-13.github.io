@@ -7,7 +7,7 @@ export default function SkillsPage() {
 
   return (
     <div className="w-full h-full flex flex-col pt-20 lg:pt-0 animate-in fade-in duration-500">
-      <section className="py-32 px-6 lg:px-16 min-h-screen bg-[var(--bg-soft)]">
+      <section className="py-32 px-6 lg:px-16 min-h-screen bg-transparent">
         <div className="max-w-5xl">
           <div className="font-mono text-xs text-[var(--text-muted)] mb-8 uppercase tracking-widest">
             /path/skills

@@ -39,10 +39,10 @@
 }
 
 [data-theme="light"] {
-  --bg: #f5f2ea;
-  --bg-soft: #ebe6dc;
-  --surface: #fffaf0;
-  --surface-elevated: #ffffff;
+  --bg: #ebe6dc;
+  --bg-soft: #e3dccf;
+  --surface: #ebe6dc;
+  --surface-elevated: #f4eee2;
 
   --text: #101010;
   --text-soft: #2b2b2b;
