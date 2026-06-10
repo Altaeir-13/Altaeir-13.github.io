@@ -95,7 +95,7 @@ export default function BootSequence({ onComplete }: BootSequenceProps) {
   }
 
   return (
-    <div className="absolute inset-0 z-50 bg-[var(--bg)] text-[var(--terminal-green)] font-typewriter overflow-hidden select-none pointer-events-auto">
+    <div className="absolute inset-0 z-50 bg-[#000000] text-[var(--terminal-green)] font-typewriter overflow-hidden select-none pointer-events-auto">
       
       {/* Grid phase: overlay matrix */}
       {phase === "grid" && (
