@@ -3,6 +3,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { terminalCommands } from "@/lib/terminalCommands";
+import BootSequence from "@/components/BootSequence";
 
 interface HistoryEntry {
   command: string;
@@ -12,6 +13,9 @@ interface HistoryEntry {
 
 export default function InteractiveTerminal() {
   const router = useRouter();
+  const [isMounted, setIsMounted] = useState(false);
+  const [hasBooted, setHasBooted] = useState(false);
+  
   const [history, setHistory] = useState<HistoryEntry[]>(() => [
     {
       command: "neofetch",
@@ -26,16 +30,39 @@ export default function InteractiveTerminal() {
   const endRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    inputRef.current?.focus();
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setIsMounted(true);
+    const skipBoot = 
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches ||
+      sessionStorage.getItem('portfolioBootSeen') === 'true';
+
+    if (skipBoot) {
+      setHasBooted(true);
+    }
   }, []);
 
+  useEffect(() => {
+    if (hasBooted && isMounted) {
+      inputRef.current?.focus();
+    }
+  }, [hasBooted, isMounted]);
+
   const handleContainerClick = () => {
-    inputRef.current?.focus();
+    if (hasBooted) {
+      inputRef.current?.focus();
+    }
   };
 
   useEffect(() => {
-    endRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [history]);
+    if (hasBooted) {
+      endRef.current?.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [history, hasBooted]);
+
+  const handleBootComplete = () => {
+    sessionStorage.setItem('portfolioBootSeen', 'true');
+    setHasBooted(true);
+  };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.ctrlKey && e.key.toLowerCase() === "c") {
@@ -134,49 +161,61 @@ export default function InteractiveTerminal() {
   const isCommandValid = input.trim() === "" || !!terminalCommands[input.trim().toLowerCase()] || !!terminalCommands[baseCmdInput];
   const inputColor = isCommandValid ? "var(--terminal-green)" : "var(--terminal-pink)";
 
+  if (!isMounted) {
+    return <div className="w-full min-h-screen bg-[#000000]" />;
+  }
+
   return (
     <div 
-      className="w-full min-h-screen flex flex-col bg-[#000000] text-[var(--terminal-green)] font-typewriter text-sm md:text-base cursor-text overflow-hidden"
+      className="w-full min-h-screen flex flex-col bg-[#000000] text-[var(--terminal-green)] font-typewriter text-sm md:text-base cursor-text overflow-hidden relative"
       onClick={handleContainerClick}
     >
-      <div className="flex-1 overflow-y-auto px-6 py-6 md:px-12 md:py-12 space-y-4">
-        {history.map((entry, idx) => (
-          <div key={idx} className="space-y-2">
-            <div className="flex flex-wrap gap-2 text-[var(--terminal-green)]">
+      {!hasBooted && (
+        <BootSequence onComplete={handleBootComplete} />
+      )}
+
+      {hasBooted && (
+        <>
+          <div className="flex-1 overflow-y-auto px-6 py-6 md:px-12 md:py-12 space-y-4">
+            {history.map((entry, idx) => (
+              <div key={idx} className="space-y-2">
+                <div className="flex flex-wrap gap-2 text-[var(--terminal-green)]">
+                  <span>www.randerson.dev:~$</span>
+                  <span style={{ color: entry.color || "var(--terminal-green)" }}>{entry.command}</span>
+                </div>
+                {entry.output && <div className="mb-4">{entry.output}</div>}
+              </div>
+            ))}
+
+            <div className="flex flex-wrap gap-2 text-[var(--terminal-green)] items-center">
               <span>www.randerson.dev:~$</span>
-              <span style={{ color: entry.color || "var(--terminal-green)" }}>{entry.command}</span>
+              <div className="relative flex-1 min-w-[200px]">
+                <span style={{ color: inputColor }} className="break-all">{input}</span>
+                <span className="inline-block w-2 h-4 bg-[var(--terminal-green)] animate-pulse align-middle ml-1" />
+                <input
+                  ref={inputRef}
+                  type="text"
+                  value={input}
+                  onChange={(e) => setInput(e.target.value)}
+                  onKeyDown={handleKeyDown}
+                  className="absolute inset-0 opacity-0 cursor-text w-full"
+                  autoFocus
+                  aria-label="Terminal input"
+                  autoComplete="off"
+                  spellCheck="false"
+                />
+              </div>
             </div>
-            {entry.output && <div className="mb-4">{entry.output}</div>}
+            <div ref={endRef} />
           </div>
-        ))}
 
-        <div className="flex flex-wrap gap-2 text-[var(--terminal-green)] items-center">
-          <span>www.randerson.dev:~$</span>
-          <div className="relative flex-1 min-w-[200px]">
-            <span style={{ color: inputColor }} className="break-all">{input}</span>
-            <span className="inline-block w-2 h-4 bg-[var(--terminal-green)] animate-pulse align-middle ml-1" />
-            <input
-              ref={inputRef}
-              type="text"
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              onKeyDown={handleKeyDown}
-              className="absolute inset-0 opacity-0 cursor-text w-full"
-              autoFocus
-              aria-label="Terminal input"
-              autoComplete="off"
-              spellCheck="false"
-            />
+          {/* Bottom Prompt */}
+          <div className="w-full px-6 py-4 md:px-12 font-typewriter text-xs md:text-sm text-[var(--terminal-green)] flex flex-wrap gap-2 opacity-70 border-t border-[var(--border)] shrink-0">
+            <span>www.randerson.dev:~$</span>
+            <span className="text-[var(--terminal-green)]">use sidebar to explore the archive or type help ...</span>
           </div>
-        </div>
-        <div ref={endRef} />
-      </div>
-
-      {/* Bottom Prompt */}
-      <div className="w-full px-6 py-4 md:px-12 font-typewriter text-xs md:text-sm text-[var(--terminal-green)] flex flex-wrap gap-2 opacity-70 border-t border-[var(--border)] shrink-0">
-        <span>www.randerson.dev:~$</span>
-        <span className="text-[var(--terminal-green)]">use sidebar to explore the archive or type help ...</span>
-      </div>
+        </>
+      )}
     </div>
   );
 }
