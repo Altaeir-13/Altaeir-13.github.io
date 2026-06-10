@@ -48,7 +48,7 @@ export default function MobileHeader() {
             <div className="flex justify-between items-center mb-12">
                <Link href="/">
                  <div className="[font-family:var(--font-gotfridus)] uppercase text-xl text-[var(--text)] leading-none tracking-tight hover:text-[var(--accent-green)] transition-colors cursor-pointer">
-                    RANDERSON DE SÁ
+                    ALTAIR STAR
                   </div>
                </Link>
                 <button 
