@@ -14,9 +14,11 @@ export default function MobileHeader() {
   return (
     <>
       <header className="lg:hidden fixed top-0 w-full z-50 bg-[var(--surface)] border-b border-[var(--border)] px-6 py-4 flex items-center justify-between">
-        <div className="font-display text-xl text-[var(--text)] leading-none tracking-tight">
-          RDS
-        </div>
+        <Link href="/">
+          <div className="font-display text-xl text-[var(--text)] leading-none tracking-tight cursor-pointer hover:text-[var(--accent-green)] transition-colors">
+            RDS
+          </div>
+        </Link>
         
         <div className="flex items-center gap-4">
           <button
@@ -44,9 +46,11 @@ export default function MobileHeader() {
             className="lg:hidden fixed inset-0 z-[60] bg-[var(--bg)] p-6 flex flex-col"
           >
             <div className="flex justify-between items-center mb-12">
-               <div className="font-display text-xl text-[var(--text)] leading-none tracking-tight">
-                  RANDERSON DE SÁ
-                </div>
+               <Link href="/">
+                 <div className="font-display text-xl text-[var(--text)] leading-none tracking-tight hover:text-[var(--accent-green)] transition-colors cursor-pointer">
+                    RANDERSON DE SÁ
+                  </div>
+               </Link>
                 <button 
                   onClick={() => setIsOpen(false)}
                   className="text-[var(--text-soft)] hover:text-[var(--accent-magenta)]"
@@ -57,7 +61,6 @@ export default function MobileHeader() {
 
             <nav className="flex flex-col gap-6 font-mono text-lg">
               {[
-                { id: "/", pt: "/Home", en: "/Home" },
                 { id: "/me", pt: "#Me", en: "#Me" },
                 { id: "/craft", pt: "My Craft", en: "My Craft" },
                 { id: "/skills", pt: "Skills", en: "Skills" },

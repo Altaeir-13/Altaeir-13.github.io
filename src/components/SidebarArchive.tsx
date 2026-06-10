@@ -13,11 +13,13 @@ export default function SidebarArchive() {
       
       {/* Identity / Brand */}
       <div className="mb-8">
-        <h1 className="font-display text-4xl text-[var(--text)] leading-none tracking-tight">
-          RANDERSON
-          <br />
-          DE SÁ
-        </h1>
+        <Link href="/">
+          <h1 className="font-display text-4xl text-[var(--text)] leading-none tracking-tight hover:text-[var(--accent-green)] transition-colors cursor-pointer">
+            RANDERSON
+            <br />
+            DE SÁ
+          </h1>
+        </Link>
         <p className="font-mono text-[10px] text-[var(--text-faint)] uppercase tracking-widest mt-4 mb-6">
           Portfolio Archive
         </p>
@@ -31,7 +33,6 @@ export default function SidebarArchive() {
       {/* Navigation Directory */}
       <nav className="flex-1 flex flex-col gap-2 font-mono text-xs mb-8">
         {[
-          { id: "/", icon: "🙂", pt: "/Home", en: "/Home" },
           { id: "/me", icon: "👤", pt: "#Me", en: "#Me" },
           { id: "/craft", icon: "🗂", pt: "My Craft", en: "My Craft" },
           { id: "/skills", icon: "⚙", pt: "Skills", en: "Skills" },
