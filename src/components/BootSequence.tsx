@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { useLocale } from "@/context/LocaleContext";
 
 const ASCII_LINES = [
   "                 ..:---===---:..                 ",
@@ -32,6 +33,7 @@ interface BootSequenceProps {
 }
 
 export default function BootSequence({ onComplete }: BootSequenceProps) {
+  const { t } = useLocale();
   const [phase, setPhase] = useState<"grid" | "ascii" | "done">("grid");
   const [visibleLines, setVisibleLines] = useState<number>(0);
 
@@ -44,7 +46,7 @@ export default function BootSequence({ onComplete }: BootSequenceProps) {
 
   useEffect(() => {
     // Listen for skip events
-    const handleSkip = (_e: Event) => {
+    const handleSkip = () => {
       // Prevent skipping if it's an internal interaction we might not want to capture,
       // but generally any key or click should skip.
       skip();
@@ -107,9 +109,9 @@ export default function BootSequence({ onComplete }: BootSequenceProps) {
         
         {phase === "grid" && (
           <div className="opacity-80">
-            <p>Initializing portfolio_archive...</p>
-            <p>Loading memory modules...</p>
-            <p>Mounting terminal interface...</p>
+            <p>{t.terminal.bootLog1}</p>
+            <p>{t.terminal.bootLog2}</p>
+            <p>{t.terminal.bootLog3}</p>
           </div>
         )}
 
@@ -133,11 +135,11 @@ export default function BootSequence({ onComplete }: BootSequenceProps) {
                 <div className="text-sm lg:text-base space-y-2">
                   <p><span className="text-[var(--terminal-pink)] mr-3">Host:</span> Randerson de Sá</p>
                   <p><span className="text-[var(--terminal-pink)] mr-3">OS:</span> Portfolio OS</p>
-                  <p><span className="text-[var(--terminal-pink)] mr-3">Role:</span> Computer Science Student</p>
-                  <p><span className="text-[var(--terminal-pink)] mr-3">Focus:</span> Mobile, Backend, Data, Applied AI</p>
+                  <p><span className="text-[var(--terminal-pink)] mr-3">Role:</span> {t.terminal.neofetch.role}</p>
+                  <p><span className="text-[var(--terminal-pink)] mr-3">Focus:</span> {t.terminal.neofetch.focus}</p>
                   <p><span className="text-[var(--terminal-pink)] mr-3">Stack:</span> Flutter, Dart, Supabase, PostgreSQL, Next.js, Python</p>
-                  <p><span className="text-[var(--terminal-pink)] mr-3">Status:</span> open to internships</p>
-                  <p><span className="text-[var(--terminal-pink)] mr-3">Location:</span> Brazil</p>
+                  <p><span className="text-[var(--terminal-pink)] mr-3">Status:</span> {t.terminal.neofetch.status}</p>
+                  <p><span className="text-[var(--terminal-pink)] mr-3">Location:</span> {t.terminal.neofetch.location}</p>
                 </div>
               </div>
             )}

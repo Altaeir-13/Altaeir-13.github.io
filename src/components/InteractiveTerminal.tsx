@@ -2,7 +2,8 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { terminalCommands } from "@/lib/terminalCommands";
+import { terminalCommands, getCommand } from "@/lib/terminalCommands";
+import { useLocale } from "@/context/LocaleContext";
 import BootSequence from "@/components/BootSequence";
 
 interface HistoryEntry {
@@ -13,13 +14,14 @@ interface HistoryEntry {
 
 export default function InteractiveTerminal() {
   const router = useRouter();
+  const { locale, t } = useLocale();
   const [isMounted, setIsMounted] = useState(false);
   const [hasBooted, setHasBooted] = useState(false);
   
   const [history, setHistory] = useState<HistoryEntry[]>(() => [
     {
       command: "neofetch",
-      output: terminalCommands.neofetch([], router),
+      output: terminalCommands.neofetch([], router, t, locale),
       color: "var(--terminal-green)",
     },
   ]);
@@ -100,7 +102,7 @@ export default function InteractiveTerminal() {
       }
     } else if (e.key === "Tab") {
       e.preventDefault();
-      const availableCmds = Object.keys(terminalCommands);
+      const availableCmds = Object.keys(terminalCommands).filter(c => !c.includes(" "));
       const matches = availableCmds.filter((cmd) => cmd.startsWith(input.toLowerCase()));
       if (matches.length === 1) {
         setInput(matches[0]);
@@ -128,7 +130,6 @@ export default function InteractiveTerminal() {
     setHistoryIndex(-1);
     setInput("");
 
-    const baseCmd = cmdStr.split(" ")[0].toLowerCase();
     const lowerCmd = cmdStr.toLowerCase();
     
     if (lowerCmd === "clear" || lowerCmd === "cls") {
@@ -137,19 +138,19 @@ export default function InteractiveTerminal() {
     }
 
     // Try finding exact match or alias
-    const handler = terminalCommands[lowerCmd] || terminalCommands[baseCmd];
+    const handler = getCommand(cmdStr);
     let output: React.ReactNode;
     let color = "var(--terminal-green)";
 
     if (handler) {
       const args = cmdStr.split(" ").slice(1);
-      output = handler(args, router);
+      output = handler(args, router, t, locale);
     } else {
       color = "var(--terminal-pink)";
       output = (
         <div className="text-[var(--terminal-pink)]">
-          Command not found: {cmdStr}<br />
-          Type <span className="text-[var(--terminal-green)]">help</span> to see available commands.
+          {t.terminal.notFound} {cmdStr}<br />
+          {t.terminal.typeHelp}
         </div>
       );
     }
@@ -157,8 +158,7 @@ export default function InteractiveTerminal() {
     setHistory((prev) => [...prev, { command: cmdStr, output, color }]);
   };
 
-  const baseCmdInput = input.trim().split(" ")[0].toLowerCase();
-  const isCommandValid = input.trim() === "" || !!terminalCommands[input.trim().toLowerCase()] || !!terminalCommands[baseCmdInput];
+  const isCommandValid = input.trim() === "" || !!getCommand(input);
   const inputColor = isCommandValid ? "var(--terminal-green)" : "var(--terminal-pink)";
 
   if (!isMounted) {
@@ -212,7 +212,7 @@ export default function InteractiveTerminal() {
           {/* Bottom Prompt */}
           <div className="w-full px-6 py-4 md:px-12 font-typewriter text-xs md:text-sm text-[var(--terminal-green)] flex flex-wrap gap-2 opacity-70 border-t border-[var(--border)] shrink-0">
             <span>www.randerson.dev:~$</span>
-            <span className="text-[var(--terminal-green)]">use sidebar to explore the archive or type help ...</span>
+            <span className="text-[var(--terminal-green)]">{t.terminal.sidebarPrompt}</span>
           </div>
         </>
       )}

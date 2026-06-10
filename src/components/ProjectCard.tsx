@@ -1,5 +1,6 @@
 "use client"
 import { ArrowUpRight, Github } from "lucide-react"
+import { useLocale } from "@/context/LocaleContext"
 
 interface ProjectProps {
   title: string;
@@ -10,8 +11,6 @@ interface ProjectProps {
   contributions: string[];
   linkDeploy?: string;
   linkGithub?: string;
-  statusLabel?: string;
-  contributionsLabel?: string;
   index: string;
 }
 
@@ -24,11 +23,9 @@ export default function ProjectCard({
   contributions, 
   linkDeploy, 
   linkGithub, 
-  statusLabel, 
-  contributionsLabel,
   index 
 }: ProjectProps) {
-  
+  const { t } = useLocale()
   const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
 
   return (
@@ -38,9 +35,9 @@ export default function ProjectCard({
       </div>
       
       <div className="font-mono text-xs text-[var(--text-soft)] space-y-1 mb-6">
-        <p><strong className="text-[var(--text)]">{statusLabel || "Status:"}</strong> {status}</p>
-        <p><strong className="text-[var(--text)]">Type:</strong> {type}</p>
-        <p className="leading-snug"><strong className="text-[var(--text)]">Stack:</strong> {technologies.join(" · ")}</p>
+        <p><strong className="text-[var(--text)]">{t.projects.labels.status}</strong> {status}</p>
+        <p><strong className="text-[var(--text)]">{t.projects.labels.type}</strong> {type}</p>
+        <p className="leading-snug"><strong className="text-[var(--text)]">{t.projects.labels.stack}</strong> {technologies.join(" · ")}</p>
       </div>
 
       <h3 className="font-sans font-bold text-xl mb-4 text-[var(--text)]">{title}</h3>
@@ -48,7 +45,7 @@ export default function ProjectCard({
       
       <div className="mb-8">
         <p className="font-mono text-xs text-[var(--text)] mb-2 uppercase tracking-widest">
-          {contributionsLabel || "Contributions:"}
+          {t.projects.labels.contributions}
         </p>
         <ul className="list-disc list-inside text-sm text-[var(--text-soft)] space-y-1 font-sans">
           {contributions.map((item, idx) => (

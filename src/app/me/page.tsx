@@ -19,7 +19,7 @@ export default function MePage() {
             {t.about.title}
           </h2>
           <p className="font-mono text-sm text-[var(--text-soft)] mb-16">
-            A short technical-personal dossier.
+            {t.about.dossier}
           </p>
 
           <div className="grid md:grid-cols-[1fr_300px] gap-12 lg:gap-24">
@@ -32,12 +32,12 @@ export default function MePage() {
 
             {/* Metadata */}
             <div className="font-mono text-xs text-[var(--text-soft)] bg-[var(--surface-elevated)] border border-[var(--border)] p-6 h-fit">
-              <div className="mb-4 text-[var(--accent-green)] border-b border-[var(--border-strong)] pb-2">[terminal metadata]</div>
+              <div className="mb-4 text-[var(--accent-green)] border-b border-[var(--border-strong)] pb-2">{t.about.metaTitle}</div>
               <ul className="space-y-3">
-                <li><strong className="text-[var(--text)] block mb-1">Status:</strong> Computer Science student</li>
-                <li><strong className="text-[var(--text)] block mb-1">Focus:</strong> Mobile, Backend, Data</li>
-                <li><strong className="text-[var(--text)] block mb-1">Location:</strong> Brazil</li>
-                <li><strong className="text-[var(--text)] block mb-1">Interests:</strong> Applied AI, software architecture, technical writing</li>
+                <li><strong className="text-[var(--text)] block mb-1">{t.about.metaStatus}</strong> {t.about.statusText}</li>
+                <li><strong className="text-[var(--text)] block mb-1">{t.about.metaFocus}</strong> {t.about.focusText}</li>
+                <li><strong className="text-[var(--text)] block mb-1">{t.about.metaLocation}</strong> {t.about.locationText}</li>
+                <li><strong className="text-[var(--text)] block mb-1">{t.about.metaInterests}</strong> {t.about.interestsText}</li>
               </ul>
             </div>
           </div>
@@ -66,8 +66,8 @@ export default function MePage() {
                     [{job.period.split(' | ')[0]}] <span className="text-[var(--accent-magenta)] group-hover:text-[var(--accent-green)] transition-colors">{job.title}</span> — {job.company}
                   </div>
                   <div className="text-[var(--text-soft)] text-xs space-y-2 pl-4 border-l border-[var(--border-strong)]">
-                    <p><strong className="text-[var(--text)]">Context:</strong> {job.description}</p>
-                    <p><strong className="text-[var(--text)]">Impact:</strong> {job.tasks.join(" ")}</p>
+                    <p><strong className="text-[var(--text)]">{t.experience.contextLabel}</strong> {job.description}</p>
+                    <p><strong className="text-[var(--text)]">{t.experience.impactLabel}</strong> {job.tasks.join(" ")}</p>
                   </div>
                 </div>
               ))}
@@ -85,10 +85,10 @@ export default function MePage() {
 
             <div className="font-mono text-sm">
               <div className="text-[var(--text)] mb-4 bg-[var(--surface-elevated)] border border-[var(--border)] p-4">
-                <p className="mb-2"><span className="text-[var(--accent-green)]">Degree:</span> {t.education.degree}</p>
-                <p className="mb-2"><span className="text-[var(--accent-green)]">Institution:</span> {t.education.institution}</p>
-                <p className="mb-2"><span className="text-[var(--accent-green)]">Location:</span> {t.education.period.split(' | ')[1]}</p>
-                <p><span className="text-[var(--accent-green)]">Period:</span> {t.education.period.split(' | ')[0]}</p>
+                <p className="mb-2"><span className="text-[var(--accent-green)]">{t.education.degreeLabel}</span> {t.education.degree}</p>
+                <p className="mb-2"><span className="text-[var(--accent-green)]">{t.education.institutionLabel}</span> {t.education.institution}</p>
+                <p className="mb-2"><span className="text-[var(--accent-green)]">{t.education.locationLabel}</span> {t.education.period.split(' | ')[1]}</p>
+                <p><span className="text-[var(--accent-green)]">{t.education.periodLabel}</span> {t.education.period.split(' | ')[0]}</p>
               </div>
 
               <div className="mt-8 border-l border-[var(--border-strong)] pl-4">

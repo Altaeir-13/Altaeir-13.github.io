@@ -1,38 +1,31 @@
 import React from "react";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
+import { translations } from "@/data/translations";
 
-export type CommandHandler = (args: string[], router: AppRouterInstance) => React.ReactNode | string | null;
+export type Dictionary = typeof translations["pt"];
+
+export type CommandHandler = (args: string[], router: AppRouterInstance, t: Dictionary, locale: string) => React.ReactNode | string | null;
 
 export const terminalCommands: Record<string, CommandHandler> = {
-  help: () => (
-    <div className="text-[var(--terminal-green)] leading-relaxed">
-      Available commands:<br />
-      about, banner, curiosity, date, donate, email, github, help, linkedin, clear, neofetch, projects, repos, snake, sudo, team, vi, vim, weather, whoami
-      <br /><br />
-      [tab]       trigger completion.<br />
-      [ctrl+l]    clear terminal.<br />
-      [ctrl+c]    cancel command.
+  help: (_args, _router, t) => (
+    <div className="text-[var(--terminal-green)] leading-relaxed whitespace-pre">
+      {t.terminal.helpText}
     </div>
   ),
 
-  about: () => (
-    <div className="text-[var(--terminal-green)] leading-relaxed">
-      Randerson de Sá is a developer in training focused on mobile, backend, data and applied AI.<br />
-      <br />
-      This portfolio works as a personal archive of projects, skills and experiments.
+  about: (_args, _router, t) => (
+    <div className="text-[var(--terminal-green)] leading-relaxed whitespace-pre">
+      {t.terminal.aboutText}
     </div>
   ),
 
-  whoami: () => (
-    <div className="text-[var(--terminal-green)] leading-relaxed">
-      randerson<br />
-      Developer in Training<br />
-      Focus: Mobile, Backend, Data, Applied AI<br />
-      Location: Brazil
+  whoami: (_args, _router, t) => (
+    <div className="text-[var(--terminal-green)] leading-relaxed whitespace-pre">
+      {t.terminal.whoamiText}
     </div>
   ),
   
-  "who am i": () => terminalCommands.whoami([], {} as AppRouterInstance), // Alias
+  "who am i": (_args, _router, t, locale) => terminalCommands.whoami([], _router, t, locale), // Alias
 
   banner: () => (
     <div className="mb-4">
@@ -45,7 +38,7 @@ export const terminalCommands: Record<string, CommandHandler> = {
     </div>
   ),
 
-  neofetch: () => (
+  neofetch: (_args, _router, t) => (
     <div className="w-full flex flex-col lg:flex-row gap-8 lg:gap-16 items-start justify-start py-4">
       <div className="hidden md:block flex-shrink-0 font-typewriter text-[8px] lg:text-[10px] xl:text-[12px] leading-[1.1] text-[var(--terminal-pink)] opacity-90 select-none whitespace-pre">
 {`                 ..:---===---:..                 
@@ -83,53 +76,47 @@ export const terminalCommands: Record<string, CommandHandler> = {
         <div className="font-typewriter text-sm lg:text-base text-[var(--terminal-green)] space-y-2">
           <p><span className="text-[var(--terminal-pink)] mr-3">Host:</span> Randerson de Sá</p>
           <p><span className="text-[var(--terminal-pink)] mr-3">OS:</span> Portfolio OS</p>
-          <p><span className="text-[var(--terminal-pink)] mr-3">Role:</span> Computer Science Student</p>
-          <p><span className="text-[var(--terminal-pink)] mr-3">Focus:</span> Mobile, Backend, Data, Applied AI</p>
+          <p><span className="text-[var(--terminal-pink)] mr-3">Role:</span> {t.terminal.neofetch.role}</p>
+          <p><span className="text-[var(--terminal-pink)] mr-3">Focus:</span> {t.terminal.neofetch.focus}</p>
           <p><span className="text-[var(--terminal-pink)] mr-3">Stack:</span> Flutter, Dart, Supabase, PostgreSQL, Next.js, Python</p>
-          <p><span className="text-[var(--terminal-pink)] mr-3">Status:</span> open to internships</p>
-          <p><span className="text-[var(--terminal-pink)] mr-3">Location:</span> Brazil</p>
+          <p><span className="text-[var(--terminal-pink)] mr-3">Status:</span> {t.terminal.neofetch.status}</p>
+          <p><span className="text-[var(--terminal-pink)] mr-3">Location:</span> {t.terminal.neofetch.location}</p>
         </div>
       </div>
     </div>
   ),
 
-  projects: () => (
-    <div className="text-[var(--terminal-green)] leading-relaxed">
-      Projects archive:<br />
-      [01] FADIR<br />
-      [02] Ecossistema Integrado SAMU<br />
-      [03] Plataforma de Adoção de Animais<br />
-      [04] Astroturfing Detection<br /><br />
-      Type &quot;open craft&quot; or use the sidebar to inspect project files.
+  projects: (_args, _router, t) => (
+    <div className="text-[var(--terminal-green)] leading-relaxed whitespace-pre">
+      {t.terminal.projectsText}
     </div>
   ),
 
-  repos: () => (
+  repos: (_args, _router, t) => (
+    <div className="text-[var(--terminal-green)] whitespace-pre">
+      {t.terminal.reposText}
+    </div>
+  ),
+
+  github: (_args, _router, t) => (
     <div className="text-[var(--terminal-green)]">
-      Repository index is not fully configured yet.<br />
-      Use: github
+      {t.terminal.githubText}
     </div>
   ),
 
-  github: () => (
+  linkedin: (_args, _router, t) => (
     <div className="text-[var(--terminal-green)]">
-      GitHub integration pending final link setup.
+      {t.terminal.linkedinText}
     </div>
   ),
 
-  linkedin: () => (
+  email: (_args, _router, t) => (
     <div className="text-[var(--terminal-green)]">
-      LinkedIn integration pending final link setup.
+      {t.terminal.emailText}
     </div>
   ),
 
-  email: () => (
-    <div className="text-[var(--terminal-green)]">
-      Email not configured yet.
-    </div>
-  ),
-
-  date: () => {
+  date: (_args, _router, t, locale) => {
     const d = new Date();
     
     const start = new Date(d.getFullYear(), 0, 0);
@@ -137,15 +124,14 @@ export const terminalCommands: Record<string, CommandHandler> = {
     const oneDay = 1000 * 60 * 60 * 24;
     const dayOfYear = Math.floor(diff / oneDay);
     
-    const weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-    
     const timeStr = d.toLocaleTimeString('en-US', { hour12: false });
     
     let tzName = "Unknown";
     try {
       tzName = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    } catch(_e) {}
+    } catch {
+      // ignore
+    }
     
     // Offset calculation
     const offsetMin = d.getTimezoneOffset();
@@ -154,21 +140,32 @@ export const terminalCommands: Record<string, CommandHandler> = {
     const offsetSign = offsetMin > 0 ? "-" : "+";
     const offsetStr = `GMT${offsetSign}${String(offsetHours).padStart(2, "0")}${String(offsetMins).padStart(2, "0")}`;
 
-    const localeStr = navigator.language || "en-US";
+    let localeStr = "en-US";
+    if (locale === "pt") localeStr = "pt-BR";
+    else if (locale === "es") localeStr = "es-ES";
+
+    let weekdayName = "";
+    let monthName = "";
+    try {
+      weekdayName = new Intl.DateTimeFormat(localeStr, { weekday: 'long' }).format(d);
+      monthName = new Intl.DateTimeFormat(localeStr, { month: 'long' }).format(d);
+    } catch {
+      // ignore
+    }
 
     return (
       <div className="text-[var(--terminal-green)] leading-relaxed whitespace-pre">
 {`${d.toString()}
 
-Weekday: ${weekdays[d.getDay()]}
-Month: ${months[d.getMonth()]}
-Day of month: ${d.getDate()}
-Day of year: ${dayOfYear}
-Year: ${d.getFullYear()}
-Time: ${timeStr}
-Timezone offset: ${offsetStr}
-Timezone name: ${tzName}
-Locale: ${localeStr}`}
+${t.terminal.dateLabels.weekday} ${weekdayName}
+${t.terminal.dateLabels.month} ${monthName}
+${t.terminal.dateLabels.day} ${d.getDate()}
+${t.terminal.dateLabels.dayYear} ${dayOfYear}
+${t.terminal.dateLabels.year} ${d.getFullYear()}
+${t.terminal.dateLabels.time} ${timeStr}
+${t.terminal.dateLabels.tzOffset} ${offsetStr}
+${t.terminal.dateLabels.tzName} ${tzName}
+${t.terminal.dateLabels.locale} ${localeStr}`}
       </div>
     );
   },
@@ -184,51 +181,47 @@ Locale: ${localeStr}`}
     return <div className="text-[var(--terminal-green)]">{facts[Math.floor(Math.random() * facts.length)]}</div>;
   },
 
-  donate: () => (
+  donate: (_args, _router, t) => (
     <div className="text-[var(--terminal-green)]">
-      No donation endpoint configured. Support by exploring the archive.
+      {t.terminal.donateText}
     </div>
   ),
 
-  sudo: () => (
+  sudo: (_args, _router, t) => (
     <div className="text-[var(--terminal-pink)]">
-      Permission denied: this incident will be reported.
+      {t.terminal.sudoText}
     </div>
   ),
 
-  team: () => (
-    <div className="text-[var(--terminal-green)]">
-      Solo archive maintained by Randerson de Sá.<br />
-      Collaborations may appear inside project files.
+  team: (_args, _router, t) => (
+    <div className="text-[var(--terminal-green)] whitespace-pre">
+      {t.terminal.teamText}
     </div>
   ),
 
-  vi: () => (
-    <div className="text-[var(--terminal-green)]">
-      Opening vim...<br />
-      Just kidding. Press :q to escape imaginary mode.
+  vi: (_args, _router, t) => (
+    <div className="text-[var(--terminal-green)] whitespace-pre">
+      {t.terminal.viText}
     </div>
   ),
   
-  vim: () => terminalCommands.vi([], {} as AppRouterInstance), // Alias
+  vim: (_args, _router, t, locale) => terminalCommands.vi([], _router, t, locale), // Alias
 
-  ":q": () => (
+  ":q": (_args, _router, t) => (
     <div className="text-[var(--terminal-green)]">
-      Exited imaginary vim.
+      {t.terminal.qText}
     </div>
   ),
 
-  weather: () => (
-    <div className="text-[var(--terminal-green)] leading-relaxed">
-      Weather service unavailable in static archive mode.<br />
-      Current forecast: dark theme, neon fog, 100% chance of code.
+  weather: (_args, _router, t) => (
+    <div className="text-[var(--terminal-green)] leading-relaxed whitespace-pre">
+      {t.terminal.weatherText}
     </div>
   ),
 
-  snake: () => (
-    <div className="text-[var(--terminal-green)]">
-      Snake module loaded.<br />
-      Use arrow keys. Press ESC to quit.
+  snake: (_args, _router, t) => (
+    <div className="text-[var(--terminal-green)] whitespace-pre">
+      {t.terminal.snakeText}
     </div>
   ),
 
@@ -236,27 +229,49 @@ Locale: ${localeStr}`}
   clear: () => null,
   cls: () => null,
 
-  me: (_, router) => {
+  me: (_, router, t) => {
     router.push("/me");
-    return <div className="text-[var(--terminal-green)]">Navigating to /me...</div>;
+    return <div className="text-[var(--terminal-green)]">{t.terminal.navigating} /me...</div>;
   },
-  "open me": (_, router) => terminalCommands.me([], router),
+  "open me": (_, router, t, locale) => terminalCommands.me([], router, t, locale),
   
-  craft: (_, router) => {
+  craft: (_, router, t) => {
     router.push("/craft");
-    return <div className="text-[var(--terminal-green)]">Navigating to /craft...</div>;
+    return <div className="text-[var(--terminal-green)]">{t.terminal.navigating} /craft...</div>;
   },
-  "open craft": (_, router) => terminalCommands.craft([], router),
+  "open craft": (_, router, t, locale) => terminalCommands.craft([], router, t, locale),
   
-  skills: (_, router) => {
+  skills: (_, router, t) => {
     router.push("/skills");
-    return <div className="text-[var(--terminal-green)]">Navigating to /skills...</div>;
+    return <div className="text-[var(--terminal-green)]">{t.terminal.navigating} /skills...</div>;
   },
-  "open skills": (_, router) => terminalCommands.skills([], router),
+  "open skills": (_, router, t, locale) => terminalCommands.skills([], router, t, locale),
   
-  contact: (_, router) => {
+  contact: (_, router, t) => {
     router.push("/contact");
-    return <div className="text-[var(--terminal-green)]">Navigating to /contact...</div>;
+    return <div className="text-[var(--terminal-green)]">{t.terminal.navigating} /contact...</div>;
   },
-  "open contact": (_, router) => terminalCommands.contact([], router),
+  "open contact": (_, router, t, locale) => terminalCommands.contact([], router, t, locale),
+};
+
+// Aliases integration
+const aliases: Record<string, string> = {
+  // PT aliases
+  "ajuda": "help",
+  "sobre": "about",
+  "projetos": "projects",
+  "contato": "open contact",
+  "limpar": "clear",
+  // ES aliases
+  "ayuda": "help",
+  "proyectos": "projects",
+  "contacto": "open contact",
+  "limpiar": "clear",
+};
+
+export const getCommand = (input: string) => {
+  const normalized = input.trim().toLowerCase();
+  if (terminalCommands[normalized]) return terminalCommands[normalized];
+  if (aliases[normalized] && terminalCommands[aliases[normalized]]) return terminalCommands[aliases[normalized]];
+  return null;
 };

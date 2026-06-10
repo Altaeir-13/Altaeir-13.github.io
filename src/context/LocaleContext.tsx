@@ -14,20 +14,21 @@ export function LocaleProvider({ children }: { children: React.ReactNode }) {
   const [locale, setLocaleState] = useState<Locale>("pt");
 
   useEffect(() => {
-    const saved = localStorage.getItem("portfolio-locale") as Locale;
-    if (saved === "pt" || saved === "en") {
+    const saved = localStorage.getItem("portfolio-language") as Locale;
+    if (saved === "pt" || saved === "en" || saved === "es") {
       // eslint-disable-next-line react-hooks/set-state-in-effect
       setLocaleState(saved);
-      document.documentElement.lang = saved === "pt" ? "pt-BR" : "en";
+      document.documentElement.lang = saved === "pt" ? "pt-BR" : saved === "en" ? "en" : "es";
     } else {
       document.documentElement.lang = "pt-BR";
+      localStorage.setItem("portfolio-language", "pt");
     }
   }, []);
 
   const setLocale = (newLocale: Locale) => {
     setLocaleState(newLocale);
-    localStorage.setItem("portfolio-locale", newLocale);
-    document.documentElement.lang = newLocale === "pt" ? "pt-BR" : "en";
+    localStorage.setItem("portfolio-language", newLocale);
+    document.documentElement.lang = newLocale === "pt" ? "pt-BR" : newLocale === "en" ? "en" : "es";
   };
 
   const t = translations[locale];

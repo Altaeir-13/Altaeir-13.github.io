@@ -1,5 +1,5 @@
 "use client"
-import { useState } from "react"
+import React, { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { useLocale } from "@/context/LocaleContext"
 import { useTheme } from "@/context/ThemeContext"
@@ -7,7 +7,7 @@ import { Sun, Moon, Menu, X } from "lucide-react"
 import Link from "next/link"
 
 export default function MobileHeader() {
-  const { locale, setLocale } = useLocale()
+  const { locale, setLocale, t } = useLocale()
   const { theme, toggleTheme } = useTheme()
   const [isOpen, setIsOpen] = useState(false)
 
@@ -61,10 +61,10 @@ export default function MobileHeader() {
 
             <nav className="flex flex-col gap-6 font-mono text-lg">
               {[
-                { id: "/me", pt: "#Me", en: "#Me" },
-                { id: "/craft", pt: "My Craft", en: "My Craft" },
-                { id: "/skills", pt: "Skills", en: "Skills" },
-                { id: "/contact", pt: "Contact", en: "Contact" },
+                { id: "/me", label: t.nav.about },
+                { id: "/craft", label: t.nav.projects },
+                { id: "/skills", label: t.nav.skills },
+                { id: "/contact", label: t.nav.contact },
               ].map((item) => (
                 <Link
                   key={item.id}
@@ -72,18 +72,26 @@ export default function MobileHeader() {
                   onClick={() => setIsOpen(false)}
                   className="text-[var(--text)] hover:text-[var(--accent-green)] transition-colors border-b border-[var(--border)] pb-4"
                 >
-                  {locale === "pt" ? item.pt : item.en}
+                  {item.label}
                 </Link>
               ))}
             </nav>
 
-            <div className="mt-auto pt-8">
-              <button 
-                onClick={() => setLocale(locale === "pt" ? "en" : "pt")}
-                className="font-mono text-sm text-[var(--text)] px-4 py-2 border border-[var(--border)] hover:border-[var(--accent-magenta)] w-full text-center"
-              >
-                {locale === "pt" ? "MUDAR PARA INGLÊS (EN)" : "SWITCH TO PORTUGUESE (PT)"}
-              </button>
+            <div className="mt-auto pt-8 flex font-mono text-sm w-full border border-[var(--border)] overflow-hidden">
+              {(["pt", "en", "es"] as const).map((l) => (
+                <button
+                  key={l}
+                  onClick={() => setLocale(l)}
+                  className={`flex-1 py-3 transition-colors ${
+                    locale === l 
+                      ? "bg-[var(--border)] text-[var(--text)]" 
+                      : "text-[var(--text-soft)] hover:text-[var(--text)]"
+                  }`}
+                  aria-label={`Switch to ${l.toUpperCase()}`}
+                >
+                  {l.toUpperCase()}
+                </button>
+              ))}
             </div>
           </motion.div>
         )}
