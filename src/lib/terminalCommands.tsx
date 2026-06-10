@@ -40,9 +40,7 @@ export const terminalCommands: Record<string, CommandHandler> = {
         ALTAIR STAR
       </h1>
       <div className="[font-family:var(--font-gotfridus)] uppercase text-xl lg:text-2xl text-[var(--terminal-green)] tracking-tight leading-[1.1]">
-        NOT ALL THOSE WHO WANDER
-        <br />
-        <span className="text-[var(--text)]">ARE LOST</span>
+        NOT ALL THOSE WHO WANDER<br />ARE LOST
       </div>
     </div>
   ),
@@ -73,15 +71,13 @@ export const terminalCommands: Record<string, CommandHandler> = {
             ..-==+**%@@@@@@@@@@%**+==..            
                  ..:---===---:..                 `}
       </div>
-      <div className="flex-1 w-full max-w-xl flex flex-col justify-center">
+      <div className="flex-1 w-full max-w-2xl flex flex-col justify-center">
         <div className="mb-6">
           <h1 className="[font-family:var(--font-gotfridus)] uppercase text-4xl lg:text-5xl text-[var(--text)] tracking-tight mb-2">
             ALTAIR STAR
           </h1>
           <div className="[font-family:var(--font-gotfridus)] uppercase text-xl lg:text-2xl text-[var(--terminal-green)] tracking-tight leading-[1.1]">
-            NOT ALL THOSE WHO WANDER
-            <br />
-            <span className="text-[var(--text)]">ARE LOST</span>
+            NOT ALL THOSE WHO WANDER<br />ARE LOST
           </div>
         </div>
         <div className="font-typewriter text-sm lg:text-base text-[var(--terminal-green)] space-y-2">
@@ -89,7 +85,7 @@ export const terminalCommands: Record<string, CommandHandler> = {
           <p><span className="text-[var(--terminal-pink)] mr-3">OS:</span> Portfolio OS</p>
           <p><span className="text-[var(--terminal-pink)] mr-3">Role:</span> Computer Science Student</p>
           <p><span className="text-[var(--terminal-pink)] mr-3">Focus:</span> Mobile, Backend, Data, Applied AI</p>
-          <p className="whitespace-nowrap overflow-hidden text-ellipsis"><span className="text-[var(--terminal-pink)] mr-3">Stack:</span> Flutter, Dart, Supabase, PostgreSQL, Next.js, Python</p>
+          <p><span className="text-[var(--terminal-pink)] mr-3">Stack:</span> Flutter, Dart, Supabase, PostgreSQL, Next.js, Python</p>
           <p><span className="text-[var(--terminal-pink)] mr-3">Status:</span> open to internships</p>
           <p><span className="text-[var(--terminal-pink)] mr-3">Location:</span> Brazil</p>
         </div>
