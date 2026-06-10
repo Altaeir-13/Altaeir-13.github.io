@@ -162,12 +162,12 @@ export default function InteractiveTerminal() {
   const inputColor = isCommandValid ? "var(--terminal-green)" : "var(--terminal-pink)";
 
   if (!isMounted) {
-    return <div className="w-full min-h-screen bg-[#000000]" />;
+    return <div className="w-full min-h-screen bg-transparent" />;
   }
 
   return (
     <div 
-      className="w-full min-h-screen flex flex-col bg-[#000000] text-[var(--terminal-green)] font-typewriter text-sm md:text-base cursor-text overflow-hidden relative"
+      className="w-full min-h-screen flex flex-col bg-transparent text-[var(--terminal-text)] font-typewriter text-sm md:text-base cursor-text overflow-hidden relative"
       onClick={handleContainerClick}
     >
       {!hasBooted && (

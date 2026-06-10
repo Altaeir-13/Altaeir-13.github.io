@@ -52,14 +52,17 @@
   --border: rgba(0, 0, 0, 0.14);
   --border-strong: rgba(0, 0, 0, 0.26);
 
-  --accent-green: #007f30;
-  --accent-green-soft: rgba(0, 127, 48, 0.12);
-  --accent-green-glow: rgba(0, 127, 48, 0.22);
+  --accent-green: #006b2a;
+  --accent-green-soft: rgba(0, 107, 42, 0.12);
+  --accent-green-glow: rgba(0, 107, 42, 0.22);
 
-  --accent-magenta: #c2186a;
-  --accent-magenta-strong: #9f0f55;
-  --accent-magenta-soft: rgba(194, 24, 106, 0.12);
-  --accent-magenta-glow: rgba(194, 24, 106, 0.22);
+  --accent-magenta: #a10f5d;
+  --accent-magenta-strong: #7d0b47;
+  --accent-magenta-soft: rgba(161, 15, 93, 0.12);
+  --accent-magenta-glow: rgba(161, 15, 93, 0.22);
+
+  --terminal-green: #006b2a;
+  --terminal-pink: #a10f5d;
 
   --accent-blue-shadow: #2458d3;
   --paper: #f5f2ea;
