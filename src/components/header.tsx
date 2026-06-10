@@ -25,10 +25,10 @@ export default function Header() {
         <a href="#formacao">{t.nav.education}</a>
         <a href="#contato">{t.nav.contact}</a>
 
-        <div className="flex items-center gap-4 ml-4 pl-4 border-l border-black/20 dark:border-white/20">
+        <div className="flex items-center gap-4 ml-4 pl-4 border-l border-[var(--border)]">
           <button 
             onClick={() => setLocale(locale === "pt" ? "en" : "pt")}
-            className="text-xs font-bold transition hover:text-[var(--accent-color)]"
+            className="px-3 py-1.5 text-xs font-bold rounded-md bg-[var(--surface-elevated)] border border-[var(--border)] text-[var(--text)] transition-all hover:border-[var(--accent-pink)] hover:text-[var(--accent-pink)] focus-visible:ring-2 focus-visible:ring-[var(--accent-pink)] shadow-sm"
             aria-label="Toggle language"
           >
             {locale === "pt" ? "PT | EN" : "EN | PT"}
@@ -36,7 +36,7 @@ export default function Header() {
           
           <button
             onClick={toggleTheme}
-            className="transition hover:text-[var(--accent-color)]"
+            className="p-1.5 rounded-md bg-[var(--surface-elevated)] border border-[var(--border)] text-[var(--text)] transition-all hover:border-[var(--accent-pink)] hover:text-[var(--accent-pink)] focus-visible:ring-2 focus-visible:ring-[var(--accent-pink)] shadow-sm"
             aria-label="Toggle theme"
           >
             {theme === "dark" ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}

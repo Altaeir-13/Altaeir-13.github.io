@@ -112,20 +112,20 @@ export default function Home() {
             <h1 className="text-5xl md:text-7xl font-black uppercase tracking-tighter" style={{ fontFamily: 'var(--font-germania-one)' }}>
               {t.about.heading}
             </h1>
-            <h2 className="text-2xl md:text-3xl text-[var(--text-secondary)] font-sans mt-4 max-w-3xl">
+            <h2 className="text-2xl md:text-3xl text-[var(--text-soft)] font-sans mt-4 max-w-3xl">
               {t.about.subheading}
             </h2>
             <div className="flex gap-4 mt-8 flex-wrap">
-              <a href="https://github.com/Altaeir-13" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 bg-[var(--bg-secondary)] border border-[var(--border-dark)] text-foreground px-6 py-3 rounded-full hover:bg-[var(--accent-color)] hover:text-white hover:border-[var(--accent-color)] transition-colors font-bold uppercase tracking-wider text-xs">
+              <a href="https://github.com/Altaeir-13" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 bg-[var(--surface-elevated)] border border-[var(--border-strong)] text-[var(--text)] px-6 py-3 rounded-full hover:border-[var(--accent-pink)] hover:text-[var(--accent-pink)] transition-all font-bold uppercase tracking-wider text-xs shadow-sm hover:shadow-[var(--shadow-soft)]">
                 <Github className="w-4 h-4" /> GitHub
               </a>
-              <a href="https://linkedin.com/in/randersonsousa" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 bg-[var(--bg-secondary)] border border-[var(--border-dark)] text-foreground px-6 py-3 rounded-full hover:bg-[var(--accent-color)] hover:text-white hover:border-[var(--accent-color)] transition-colors font-bold uppercase tracking-wider text-xs">
+              <a href="https://linkedin.com/in/randersonsousa" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 bg-[var(--surface-elevated)] border border-[var(--border-strong)] text-[var(--text)] px-6 py-3 rounded-full hover:border-[var(--accent-pink)] hover:text-[var(--accent-pink)] transition-all font-bold uppercase tracking-wider text-xs shadow-sm hover:shadow-[var(--shadow-soft)]">
                 <Linkedin className="w-4 h-4" /> LinkedIn
               </a>
             </div>
           </motion.div>
 
-          <motion.div className="mt-24 max-w-4xl text-lg md:text-xl text-[var(--text-secondary)] space-y-6 leading-relaxed font-sans" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
+          <motion.div className="mt-24 max-w-4xl text-lg md:text-xl text-[var(--text-soft)] space-y-6 leading-relaxed font-sans" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
             <SectionHeading title={t.about.title} />
             <p dangerouslySetInnerHTML={{ __html: t.about.p1.replace('Flutter, Dart, React, Next.js, TypeScript, Supabase/PostgreSQL e Python', '<strong>Flutter, Dart, React, Next.js, TypeScript, Supabase/PostgreSQL e Python</strong>').replace('Flutter, Dart, React, Next.js, TypeScript, Supabase/PostgreSQL, and Python', '<strong>Flutter, Dart, React, Next.js, TypeScript, Supabase/PostgreSQL, and Python</strong>') }} />
             <p>{t.about.p2}</p>
@@ -134,7 +134,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="projetos" className="bg-background text-foreground py-20 px-6 sm:px-10 lg:px-20 border-t border-[var(--border-light)]">
+      <section id="projetos" className="bg-background text-foreground py-20 px-6 sm:px-10 lg:px-20 border-t border-[var(--border)]">
         <div className="max-w-6xl mx-auto">
           <SectionHeading title={t.projects.title} subtitle={t.projects.subtitle} />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -145,13 +145,13 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="habilidades" className="bg-background text-foreground py-20 px-6 sm:px-10 lg:px-20 border-t border-[var(--border-light)]">
+      <section id="habilidades" className="bg-background text-foreground py-20 px-6 sm:px-10 lg:px-20 border-t border-[var(--border)]">
         <div className="max-w-6xl mx-auto">
           <SectionHeading title={t.skills.title} subtitle={t.skills.subtitle} />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
             {t.skills.groups.map((group, idx) => (
               <div key={idx} className="flex flex-col gap-4">
-                <h3 className="text-xl font-bold uppercase tracking-widest text-[var(--accent-color)]">{group.title}</h3>
+                <h3 className="text-xl font-bold uppercase tracking-widest text-[var(--accent-pink)]">{group.title}</h3>
                 <div className="flex flex-wrap gap-2">
                   {group.skills.map(skill => (
                     <SkillBadge key={skill} skill={skill} />
@@ -163,19 +163,19 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="experiencia" className="bg-[var(--bg-secondary)] text-foreground py-20 px-6 sm:px-10 lg:px-20 border-t border-[var(--border-light)]">
+      <section id="experiencia" className="bg-[var(--bg-soft)] text-foreground py-20 px-6 sm:px-10 lg:px-20 border-t border-[var(--border)]">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-20">
           <div>
             <SectionHeading title={t.experience.title} />
             <div className="space-y-12">
               {t.experience.jobs.map((job, idx) => (
-                <div key={idx} className="border-l-2 border-[var(--accent-color)] pl-6 relative">
-                  <div className="absolute w-4 h-4 rounded-full bg-[var(--accent-color)] -left-[9px] top-1"></div>
-                  <h3 className="text-2xl font-bold font-sans">{job.title}</h3>
-                  <h4 className="text-lg text-[var(--text-secondary)] mb-2">{job.company}</h4>
-                  <p className="text-sm font-bold uppercase tracking-widest text-gray-400 mb-4">{job.period}</p>
-                  <p className="text-[var(--text-secondary)] mb-4 text-sm">{job.description}</p>
-                  <ul className="list-disc list-inside text-sm text-[var(--text-secondary)] space-y-1">
+                <div key={idx} className="border-l-2 border-[var(--border-strong)] pl-6 relative">
+                  <div className="absolute w-4 h-4 rounded-full bg-[var(--accent-pink)] -left-[9px] top-1"></div>
+                  <h3 className="text-2xl font-bold font-sans text-[var(--text)]">{job.title}</h3>
+                  <h4 className="text-lg text-[var(--text-soft)] mb-2">{job.company}</h4>
+                  <p className="text-sm font-bold uppercase tracking-widest text-[var(--muted)] mb-4">{job.period}</p>
+                  <p className="text-[var(--text-soft)] mb-4 text-sm">{job.description}</p>
+                  <ul className="list-disc list-inside text-sm text-[var(--text-soft)] space-y-1">
                     {job.tasks.map((task, i) => (
                       <li key={i}>{task}</li>
                     ))}
@@ -188,19 +188,19 @@ export default function Home() {
           <div id="formacao">
             <SectionHeading title={t.education.title} />
             <div className="space-y-12">
-              <div className="border-l-2 border-foreground pl-6 relative">
-                <div className="absolute w-4 h-4 rounded-full bg-foreground -left-[9px] top-1"></div>
-                <h3 className="text-2xl font-bold font-sans">{t.education.degree}</h3>
-                <h4 className="text-lg text-[var(--text-secondary)] mb-2">{t.education.institution}</h4>
-                <p className="text-sm font-bold uppercase tracking-widest text-gray-400 mb-4">{t.education.period}</p>
+              <div className="border-l-2 border-[var(--border-strong)] pl-6 relative">
+                <div className="absolute w-4 h-4 rounded-full bg-[var(--text)] -left-[9px] top-1"></div>
+                <h3 className="text-2xl font-bold font-sans text-[var(--text)]">{t.education.degree}</h3>
+                <h4 className="text-lg text-[var(--text-soft)] mb-2">{t.education.institution}</h4>
+                <p className="text-sm font-bold uppercase tracking-widest text-[var(--muted)] mb-4">{t.education.period}</p>
                 
-                <h5 className="font-bold text-sm uppercase tracking-widest mt-6 mb-2">{t.education.awardsTitle}</h5>
-                <p className="text-sm text-[var(--text-secondary)]">{t.education.award}</p>
+                <h5 className="font-bold text-sm uppercase tracking-widest mt-6 mb-2 text-[var(--text)]">{t.education.awardsTitle}</h5>
+                <p className="text-sm text-[var(--text-soft)]">{t.education.award}</p>
               </div>
 
               <div className="mt-12">
                 <SectionHeading title={t.education.interestsTitle} />
-                <ul className="list-disc list-inside text-[var(--text-secondary)] space-y-2 mt-4 font-sans">
+                <ul className="list-disc list-inside text-[var(--text-soft)] space-y-2 mt-4 font-sans">
                   {t.education.interests.map((interest, i) => (
                     <li key={i}>{interest}</li>
                   ))}
@@ -211,17 +211,17 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="contato" className="bg-[var(--bg-secondary)] border-t border-[var(--border-light)] text-foreground py-32 px-6 sm:px-10 lg:px-20">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter mb-8" style={{ fontFamily: 'var(--font-germania-one)' }}>{t.contact.title}</h2>
-          <p className="text-xl text-[var(--text-secondary)] mb-12">
+      <section id="contato" className="bg-[var(--bg-soft)] border-t border-[var(--border)] text-foreground py-32 px-6 sm:px-10 lg:px-20">
+        <div className="max-w-4xl mx-auto text-center bg-[var(--surface)] p-12 rounded-3xl border border-[var(--border)] shadow-[var(--shadow-card)]">
+          <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter mb-8 text-[var(--text)]" style={{ fontFamily: 'var(--font-germania-one)' }}>{t.contact.title}</h2>
+          <p className="text-xl text-[var(--text-soft)] mb-12">
             {t.contact.subtitle}
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-6">
-            <a href="mailto:randerson.sdsn@gmail.com" className="flex items-center justify-center gap-3 bg-[var(--accent-color)] text-white px-8 py-4 rounded-full hover:bg-foreground hover:text-background transition-colors font-bold uppercase tracking-widest">
+            <a href="mailto:randerson.sdsn@gmail.com" className="flex items-center justify-center gap-3 bg-gradient-to-r from-[var(--accent-pink)] to-[var(--accent-green)] text-[#050509] px-8 py-4 rounded-full hover:scale-105 transition-transform font-bold uppercase tracking-widest shadow-lg shadow-[var(--accent-pink-soft)]">
               <Mail className="w-5 h-5" /> {t.contact.emailBtn}
             </a>
-            <button onClick={copyEmail} className="flex items-center justify-center gap-3 border border-[var(--border-dark)] px-8 py-4 rounded-full hover:bg-foreground hover:text-background transition-colors font-bold uppercase tracking-widest">
+            <button onClick={copyEmail} className="flex items-center justify-center gap-3 bg-[var(--surface-elevated)] border border-[var(--border-strong)] text-[var(--text)] px-8 py-4 rounded-full hover:border-[var(--accent-pink)] hover:text-[var(--accent-pink)] transition-all font-bold uppercase tracking-widest shadow-sm">
               <Copy className="w-5 h-5" /> {t.contact.copyBtn}
             </button>
           </div>
