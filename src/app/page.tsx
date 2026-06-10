@@ -47,11 +47,11 @@ export default function Home() {
             
             {/* Identity Block */}
             <div className="mb-10">
-              <h1 className="font-display text-5xl lg:text-6xl text-white tracking-tight mb-4">
+              <h1 className="[font-family:var(--font-gotfridus)] uppercase text-5xl lg:text-6xl text-white tracking-tight mb-4">
                 RANDERSON DE SÁ
               </h1>
               
-              <div className="font-display text-2xl lg:text-3xl text-[var(--text-soft)] tracking-tight leading-[1.1]">
+              <div className="[font-family:var(--font-gotfridus)] uppercase text-2xl lg:text-3xl text-[var(--text-soft)] tracking-tight leading-[1.1]">
                 <span className="block">NOT ALL THOSE WHO WANDER</span>
                 <span className="block text-white mt-1">ARE LOST</span>
               </div>

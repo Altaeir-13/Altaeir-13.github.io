@@ -14,7 +14,7 @@ export default function SidebarArchive() {
       {/* Identity / Brand */}
       <div className="mb-8">
         <Link href="/">
-          <h1 className="font-display text-4xl text-[var(--text)] leading-none tracking-tight hover:text-[var(--accent-green)] transition-colors cursor-pointer">
+          <h1 className="[font-family:var(--font-gotfridus)] uppercase text-4xl text-[var(--text)] leading-none tracking-tight hover:text-[var(--accent-green)] transition-colors cursor-pointer">
             RANDERSON
             <br />
             DE SÁ

@@ -15,7 +15,7 @@ export default function MobileHeader() {
     <>
       <header className="lg:hidden fixed top-0 w-full z-50 bg-[var(--surface)] border-b border-[var(--border)] px-6 py-4 flex items-center justify-between">
         <Link href="/">
-          <div className="font-display text-xl text-[var(--text)] leading-none tracking-tight cursor-pointer hover:text-[var(--accent-green)] transition-colors">
+          <div className="[font-family:var(--font-gotfridus)] uppercase text-xl text-[var(--text)] leading-none tracking-tight cursor-pointer hover:text-[var(--accent-green)] transition-colors">
             RDS
           </div>
         </Link>
@@ -47,7 +47,7 @@ export default function MobileHeader() {
           >
             <div className="flex justify-between items-center mb-12">
                <Link href="/">
-                 <div className="font-display text-xl text-[var(--text)] leading-none tracking-tight hover:text-[var(--accent-green)] transition-colors cursor-pointer">
+                 <div className="[font-family:var(--font-gotfridus)] uppercase text-xl text-[var(--text)] leading-none tracking-tight hover:text-[var(--accent-green)] transition-colors cursor-pointer">
                     RANDERSON DE SÁ
                   </div>
                </Link>
