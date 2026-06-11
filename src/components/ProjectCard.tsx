@@ -30,7 +30,7 @@ export default function ProjectCard({
 
   return (
     <div className="project-card flex flex-col h-full" data-index={index}>
-      <div className="font-mono text-xs text-[var(--accent-magenta)] mb-6 truncate">
+      <div className="font-mono text-xs text-[var(--color-secondary)] mb-6 truncate">
         /project/{slug}
       </div>
       
@@ -56,7 +56,7 @@ export default function ProjectCard({
 
       <div className="flex gap-6 mt-auto pt-4 border-t border-[var(--border-strong)] font-mono text-xs">
         {linkDeploy ? (
-          <a href={linkDeploy} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-[var(--text)] hover:text-[var(--accent-green)] transition-colors">
+          <a href={linkDeploy} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-[var(--text)] hover:text-[var(--color-primary)] transition-colors">
             Deploy <ArrowUpRight className="w-3 h-3" />
           </a>
         ) : (
@@ -66,7 +66,7 @@ export default function ProjectCard({
         )}
         
         {linkGithub ? (
-          <a href={linkGithub} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-[var(--text)] hover:text-[var(--accent-green)] transition-colors">
+          <a href={linkGithub} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-[var(--text)] hover:text-[var(--color-primary)] transition-colors">
             GitHub <Github className="w-3 h-3" />
           </a>
         ) : (

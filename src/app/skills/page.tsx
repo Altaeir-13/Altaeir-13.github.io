@@ -22,7 +22,7 @@ export default function SkillsPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 font-mono">
             {t.skills.groups.map((group, idx) => (
               <div key={idx} className="group">
-                <h3 className="text-sm text-[var(--accent-magenta)] mb-2 group-hover:text-[var(--accent-green)] transition-colors">
+                <h3 className="text-sm text-[var(--color-secondary)] mb-2 group-hover:text-[var(--color-primary)] transition-colors">
                   /skills/{group.title.toLowerCase().replace(' & ', '-').replace(' ', '-')}
                 </h3>
                 <p className="text-xs text-[var(--text-soft)] leading-loose">

@@ -36,6 +36,19 @@
 
   --shadow-green: 0 0 28px var(--accent-green-glow);
   --shadow-magenta: 0 0 28px var(--accent-magenta-glow);
+
+  /* Semantic Tokens for Dark Theme */
+  --color-primary: var(--accent-green);
+  --color-secondary: var(--accent-magenta);
+
+  --terminal-prompt: var(--accent-green);
+  --terminal-command-valid: var(--accent-green);
+  --terminal-command-invalid: var(--accent-magenta);
+  --terminal-output: var(--accent-green);
+
+  --neofetch-art: var(--accent-magenta);
+  --neofetch-label: var(--accent-magenta);
+  --neofetch-value: var(--accent-green);
 }
 
 [data-theme="light"] {
@@ -66,6 +79,19 @@
 
   --accent-blue-shadow: #2458d3;
   --paper: #f5f2ea;
+
+  /* Semantic Tokens for Light Theme (Inverted functions) */
+  --color-primary: var(--accent-magenta);
+  --color-secondary: var(--accent-green);
+
+  --terminal-prompt: var(--accent-magenta);
+  --terminal-command-valid: var(--accent-magenta);
+  --terminal-command-invalid: var(--accent-green);
+  --terminal-output: var(--text-soft);
+
+  --neofetch-art: var(--accent-green);
+  --neofetch-label: var(--accent-green);
+  --neofetch-value: var(--accent-magenta);
 }
 
 @theme {
@@ -76,8 +102,8 @@
 
   --color-background: var(--bg);
   --color-foreground: var(--text);
-  --color-accent-magenta: var(--accent-magenta);
-  --color-accent-green: var(--accent-green);
+  --color-accent-magenta: var(--color-secondary);
+  --color-accent-green: var(--color-primary);
 }
 
 /* ============================================================ */

@@ -95,7 +95,7 @@ export default function BootSequence({ onComplete }: BootSequenceProps) {
   }
 
   return (
-    <div className="absolute inset-0 z-50 bg-[var(--bg)] text-[var(--terminal-green)] font-typewriter overflow-hidden select-none pointer-events-auto">
+    <div className="absolute inset-0 z-50 bg-[var(--bg)] text-[var(--terminal-output)] font-typewriter overflow-hidden select-none pointer-events-auto">
       
       {/* Grid phase: overlay matrix */}
       {phase === "grid" && (
@@ -117,7 +117,7 @@ export default function BootSequence({ onComplete }: BootSequenceProps) {
 
         {phase === "ascii" && (
           <div className="w-full flex flex-col lg:flex-row gap-8 lg:gap-16 items-start justify-start py-4">
-            <div className="hidden md:block flex-shrink-0 text-[8px] lg:text-[10px] xl:text-[12px] leading-[1.1] text-[var(--terminal-pink)] opacity-90 whitespace-pre">
+            <div className="hidden md:block flex-shrink-0 text-[8px] lg:text-[10px] xl:text-[12px] leading-[1.1] text-[var(--neofetch-art)] opacity-90 whitespace-pre">
               {ASCII_LINES.slice(0, visibleLines).join("\n")}
             </div>
             
@@ -128,18 +128,18 @@ export default function BootSequence({ onComplete }: BootSequenceProps) {
                   <h1 className="[font-family:var(--font-gotfridus)] uppercase text-4xl lg:text-5xl text-[var(--text)] tracking-tight mb-2">
                     ALTAIR STAR
                   </h1>
-                  <div className="[font-family:var(--font-gotfridus)] uppercase text-xl lg:text-2xl text-[var(--terminal-green)] tracking-tight leading-[1.1]">
+                  <div className="[font-family:var(--font-gotfridus)] uppercase text-xl lg:text-2xl text-[var(--terminal-output)] tracking-tight leading-[1.1]">
                     NOT ALL THOSE WHO WANDER<br />ARE LOST
                   </div>
                 </div>
                 <div className="text-sm lg:text-base space-y-2">
-                  <p><span className="text-[var(--terminal-pink)] mr-3">Host:</span> Randerson de Sá</p>
-                  <p><span className="text-[var(--terminal-pink)] mr-3">OS:</span> Portfolio OS</p>
-                  <p><span className="text-[var(--terminal-pink)] mr-3">Role:</span> {t.terminal.neofetch.role}</p>
-                  <p><span className="text-[var(--terminal-pink)] mr-3">Focus:</span> {t.terminal.neofetch.focus}</p>
-                  <p><span className="text-[var(--terminal-pink)] mr-3">Stack:</span> Flutter, Dart, Supabase, PostgreSQL, Next.js, Python</p>
-                  <p><span className="text-[var(--terminal-pink)] mr-3">Status:</span> {t.terminal.neofetch.status}</p>
-                  <p><span className="text-[var(--terminal-pink)] mr-3">Location:</span> {t.terminal.neofetch.location}</p>
+                  <p><span className="text-[var(--neofetch-label)] mr-3">Host:</span> Randerson de Sá</p>
+                  <p><span className="text-[var(--neofetch-label)] mr-3">OS:</span> Portfolio OS</p>
+                  <p><span className="text-[var(--neofetch-label)] mr-3">Role:</span> {t.terminal.neofetch.role}</p>
+                  <p><span className="text-[var(--neofetch-label)] mr-3">Focus:</span> {t.terminal.neofetch.focus}</p>
+                  <p><span className="text-[var(--neofetch-label)] mr-3">Stack:</span> Flutter, Dart, Supabase, PostgreSQL, Next.js, Python</p>
+                  <p><span className="text-[var(--neofetch-label)] mr-3">Status:</span> {t.terminal.neofetch.status}</p>
+                  <p><span className="text-[var(--neofetch-label)] mr-3">Location:</span> {t.terminal.neofetch.location}</p>
                 </div>
               </div>
             )}

@@ -8,19 +8,19 @@ export type CommandHandler = (args: string[], router: AppRouterInstance, t: Dict
 
 export const terminalCommands: Record<string, CommandHandler> = {
   help: (_args, _router, t) => (
-    <div className="text-[var(--terminal-green)] leading-relaxed whitespace-pre">
+    <div className="text-[var(--terminal-output)] leading-relaxed whitespace-pre">
       {t.terminal.helpText}
     </div>
   ),
 
   about: (_args, _router, t) => (
-    <div className="text-[var(--terminal-green)] leading-relaxed whitespace-pre">
+    <div className="text-[var(--terminal-output)] leading-relaxed whitespace-pre">
       {t.terminal.aboutText}
     </div>
   ),
 
   whoami: (_args, _router, t) => (
-    <div className="text-[var(--terminal-green)] leading-relaxed whitespace-pre">
+    <div className="text-[var(--terminal-output)] leading-relaxed whitespace-pre">
       {t.terminal.whoamiText}
     </div>
   ),
@@ -29,10 +29,10 @@ export const terminalCommands: Record<string, CommandHandler> = {
 
   banner: () => (
     <div className="mb-4">
-      <h1 className="[font-family:var(--font-gotfridus)] uppercase text-4xl lg:text-5xl text-[var(--terminal-green)] tracking-tight mb-2">
+      <h1 className="[font-family:var(--font-gotfridus)] uppercase text-4xl lg:text-5xl text-[var(--color-primary)] tracking-tight mb-2">
         ALTAIR STAR
       </h1>
-      <div className="[font-family:var(--font-gotfridus)] uppercase text-xl lg:text-2xl text-[var(--terminal-green)] tracking-tight leading-[1.1]">
+      <div className="[font-family:var(--font-gotfridus)] uppercase text-xl lg:text-2xl text-[var(--color-primary)] tracking-tight leading-[1.1]">
         NOT ALL THOSE WHO WANDER<br />ARE LOST
       </div>
     </div>
@@ -40,7 +40,7 @@ export const terminalCommands: Record<string, CommandHandler> = {
 
   neofetch: (_args, _router, t) => (
     <div className="w-full flex flex-col lg:flex-row gap-8 lg:gap-16 items-start justify-start py-4">
-      <div className="hidden md:block flex-shrink-0 font-typewriter text-[8px] lg:text-[10px] xl:text-[12px] leading-[1.1] text-[var(--terminal-pink)] opacity-90 select-none whitespace-pre">
+      <div className="hidden md:block flex-shrink-0 font-typewriter text-[8px] lg:text-[10px] xl:text-[12px] leading-[1.1] text-[var(--neofetch-art)] opacity-90 select-none whitespace-pre">
 {`                 ..:---===---:..                 
             ..-==+**%@@@@@@@@%**+==..            
          .:-=+**%@@@@@@@@@@@@@@@@%**+=-:.         
@@ -69,49 +69,49 @@ export const terminalCommands: Record<string, CommandHandler> = {
           <h1 className="[font-family:var(--font-gotfridus)] uppercase text-4xl lg:text-5xl text-[var(--text)] tracking-tight mb-2">
             ALTAIR STAR
           </h1>
-          <div className="[font-family:var(--font-gotfridus)] uppercase text-xl lg:text-2xl text-[var(--terminal-green)] tracking-tight leading-[1.1]">
+          <div className="[font-family:var(--font-gotfridus)] uppercase text-xl lg:text-2xl text-[var(--color-primary)] tracking-tight leading-[1.1]">
             NOT ALL THOSE WHO WANDER<br />ARE LOST
           </div>
         </div>
-        <div className="font-typewriter text-sm lg:text-base text-[var(--terminal-green)] space-y-2">
-          <p><span className="text-[var(--terminal-pink)] mr-3">Host:</span> Randerson de Sá</p>
-          <p><span className="text-[var(--terminal-pink)] mr-3">OS:</span> Portfolio OS</p>
-          <p><span className="text-[var(--terminal-pink)] mr-3">Role:</span> {t.terminal.neofetch.role}</p>
-          <p><span className="text-[var(--terminal-pink)] mr-3">Focus:</span> {t.terminal.neofetch.focus}</p>
-          <p><span className="text-[var(--terminal-pink)] mr-3">Stack:</span> Flutter, Dart, Supabase, PostgreSQL, Next.js, Python</p>
-          <p><span className="text-[var(--terminal-pink)] mr-3">Status:</span> {t.terminal.neofetch.status}</p>
-          <p><span className="text-[var(--terminal-pink)] mr-3">Location:</span> {t.terminal.neofetch.location}</p>
+        <div className="font-typewriter text-sm lg:text-base text-[var(--neofetch-value)] space-y-2">
+          <p><span className="text-[var(--neofetch-label)] mr-3">Host:</span> Randerson de Sá</p>
+          <p><span className="text-[var(--neofetch-label)] mr-3">OS:</span> Portfolio OS</p>
+          <p><span className="text-[var(--neofetch-label)] mr-3">Role:</span> {t.terminal.neofetch.role}</p>
+          <p><span className="text-[var(--neofetch-label)] mr-3">Focus:</span> {t.terminal.neofetch.focus}</p>
+          <p><span className="text-[var(--neofetch-label)] mr-3">Stack:</span> Flutter, Dart, Supabase, PostgreSQL, Next.js, Python</p>
+          <p><span className="text-[var(--neofetch-label)] mr-3">Status:</span> {t.terminal.neofetch.status}</p>
+          <p><span className="text-[var(--neofetch-label)] mr-3">Location:</span> {t.terminal.neofetch.location}</p>
         </div>
       </div>
     </div>
   ),
 
   projects: (_args, _router, t) => (
-    <div className="text-[var(--terminal-green)] leading-relaxed whitespace-pre">
+    <div className="text-[var(--terminal-output)] leading-relaxed whitespace-pre">
       {t.terminal.projectsText}
     </div>
   ),
 
   repos: (_args, _router, t) => (
-    <div className="text-[var(--terminal-green)] whitespace-pre">
+    <div className="text-[var(--terminal-output)] whitespace-pre">
       {t.terminal.reposText}
     </div>
   ),
 
   github: (_args, _router, t) => (
-    <div className="text-[var(--terminal-green)]">
+    <div className="text-[var(--terminal-output)]">
       {t.terminal.githubText}
     </div>
   ),
 
   linkedin: (_args, _router, t) => (
-    <div className="text-[var(--terminal-green)]">
+    <div className="text-[var(--terminal-output)]">
       {t.terminal.linkedinText}
     </div>
   ),
 
   email: (_args, _router, t) => (
-    <div className="text-[var(--terminal-green)]">
+    <div className="text-[var(--terminal-output)]">
       {t.terminal.emailText}
     </div>
   ),
@@ -154,7 +154,7 @@ export const terminalCommands: Record<string, CommandHandler> = {
     }
 
     return (
-      <div className="text-[var(--terminal-green)] leading-relaxed whitespace-pre">
+      <div className="text-[var(--terminal-output)] leading-relaxed whitespace-pre">
 {`${d.toString()}
 
 ${t.terminal.dateLabels.weekday} ${weekdayName}
@@ -178,29 +178,29 @@ ${t.terminal.dateLabels.locale} ${localeStr}`}
       "C was originally called 'NB' (New B), until it was finalized in 1972.",
       "The first virus was created in 1983 as an experiment to prove that an application could be infectious."
     ];
-    return <div className="text-[var(--terminal-green)]">{facts[Math.floor(Math.random() * facts.length)]}</div>;
+    return <div className="text-[var(--terminal-output)]">{facts[Math.floor(Math.random() * facts.length)]}</div>;
   },
 
   donate: (_args, _router, t) => (
-    <div className="text-[var(--terminal-green)]">
+    <div className="text-[var(--terminal-output)]">
       {t.terminal.donateText}
     </div>
   ),
 
   sudo: (_args, _router, t) => (
-    <div className="text-[var(--terminal-pink)]">
+    <div className="text-[var(--terminal-command-invalid)]">
       {t.terminal.sudoText}
     </div>
   ),
 
   team: (_args, _router, t) => (
-    <div className="text-[var(--terminal-green)] whitespace-pre">
+    <div className="text-[var(--terminal-output)] whitespace-pre">
       {t.terminal.teamText}
     </div>
   ),
 
   vi: (_args, _router, t) => (
-    <div className="text-[var(--terminal-green)] whitespace-pre">
+    <div className="text-[var(--terminal-output)] whitespace-pre">
       {t.terminal.viText}
     </div>
   ),
@@ -208,19 +208,19 @@ ${t.terminal.dateLabels.locale} ${localeStr}`}
   vim: (_args, _router, t, locale) => terminalCommands.vi([], _router, t, locale), // Alias
 
   ":q": (_args, _router, t) => (
-    <div className="text-[var(--terminal-green)]">
+    <div className="text-[var(--terminal-output)]">
       {t.terminal.qText}
     </div>
   ),
 
   weather: (_args, _router, t) => (
-    <div className="text-[var(--terminal-green)] leading-relaxed whitespace-pre">
+    <div className="text-[var(--terminal-output)] leading-relaxed whitespace-pre">
       {t.terminal.weatherText}
     </div>
   ),
 
   snake: (_args, _router, t) => (
-    <div className="text-[var(--terminal-green)] whitespace-pre">
+    <div className="text-[var(--terminal-output)] whitespace-pre">
       {t.terminal.snakeText}
     </div>
   ),
@@ -231,25 +231,25 @@ ${t.terminal.dateLabels.locale} ${localeStr}`}
 
   me: (_, router, t) => {
     router.push("/me");
-    return <div className="text-[var(--terminal-green)]">{t.terminal.navigating} /me...</div>;
+    return <div className="text-[var(--terminal-output)]">{t.terminal.navigating} /me...</div>;
   },
   "open me": (_, router, t, locale) => terminalCommands.me([], router, t, locale),
   
   craft: (_, router, t) => {
     router.push("/craft");
-    return <div className="text-[var(--terminal-green)]">{t.terminal.navigating} /craft...</div>;
+    return <div className="text-[var(--terminal-output)]">{t.terminal.navigating} /craft...</div>;
   },
   "open craft": (_, router, t, locale) => terminalCommands.craft([], router, t, locale),
   
   skills: (_, router, t) => {
     router.push("/skills");
-    return <div className="text-[var(--terminal-green)]">{t.terminal.navigating} /skills...</div>;
+    return <div className="text-[var(--terminal-output)]">{t.terminal.navigating} /skills...</div>;
   },
   "open skills": (_, router, t, locale) => terminalCommands.skills([], router, t, locale),
   
   contact: (_, router, t) => {
     router.push("/contact");
-    return <div className="text-[var(--terminal-green)]">{t.terminal.navigating} /contact...</div>;
+    return <div className="text-[var(--terminal-output)]">{t.terminal.navigating} /contact...</div>;
   },
   "open contact": (_, router, t, locale) => terminalCommands.contact([], router, t, locale),
 };

@@ -10,7 +10,7 @@ export default function CraftPage() {
     <div className="w-full h-full flex flex-col pt-20 lg:pt-0 animate-in fade-in duration-500">
       <section className="py-32 px-6 lg:px-16 min-h-screen">
         <div className="max-w-5xl">
-          <div className="font-mono text-xs text-[var(--text-muted)] mb-8 uppercase tracking-widest">
+          <div className="font-mono text-xs text-[var(--color-secondary)] mb-8 uppercase tracking-widest">
             /path/projects
           </div>
           <h2 className="font-display text-4xl md:text-6xl mb-4 text-[var(--text)] uppercase">

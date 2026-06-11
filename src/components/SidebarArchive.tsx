@@ -15,7 +15,7 @@ export default function SidebarArchive() {
       {/* Identity / Brand */}
       <div className="mb-12">
         <Link href="/">
-          <h1 className="[font-family:var(--font-gotfridus)] uppercase text-4xl text-[var(--text)] leading-none tracking-tight hover:text-[var(--accent-green)] transition-colors cursor-pointer">
+          <h1 className="[font-family:var(--font-gotfridus)] uppercase text-4xl text-[var(--text)] leading-none tracking-tight hover:text-[var(--color-primary)] transition-colors cursor-pointer">
             ALTAIR
             <br />
             STAR
@@ -39,7 +39,7 @@ export default function SidebarArchive() {
           <Link
             key={item.id}
             href={item.id}
-            className="group flex items-center justify-between py-3 px-4 -mx-4 border-l-2 border-transparent hover:border-[var(--accent-green)] hover:bg-[rgba(0,255,65,0.03)] text-[var(--text-soft)] hover:text-[var(--accent-green)] transition-all rounded-r"
+            className="group flex items-center justify-between py-3 px-4 -mx-4 border-l-2 border-transparent hover:border-[var(--color-primary)] hover:bg-[rgba(0,255,65,0.03)] text-[var(--text-soft)] hover:text-[var(--color-primary)] transition-all rounded-r"
           >
             <span className="group-hover:translate-x-1 transition-transform">
               {item.label}
@@ -51,7 +51,7 @@ export default function SidebarArchive() {
         ))}
         <Link 
           href="/contact"
-          className="group flex items-center justify-between py-3 px-4 -mx-4 mt-4 border-l-2 border-transparent hover:border-[var(--accent-magenta)] hover:bg-[rgba(255,0,255,0.03)] text-[var(--text-soft)] hover:text-[var(--accent-magenta)] transition-all rounded-r"
+          className="group flex items-center justify-between py-3 px-4 -mx-4 mt-4 border-l-2 border-transparent hover:border-[var(--color-secondary)] hover:bg-[rgba(255,0,255,0.03)] text-[var(--text-soft)] hover:text-[var(--color-secondary)] transition-all rounded-r"
         >
           <span className="group-hover:translate-x-1 transition-transform">
              {t.nav.contact}
@@ -86,7 +86,7 @@ export default function SidebarArchive() {
           
           <button
             onClick={toggleTheme}
-            className="font-mono text-xs text-[var(--text-soft)] hover:text-[var(--text)] transition-colors px-2 py-1 border border-[var(--border)] hover:border-[var(--accent-green)] flex items-center justify-center"
+            className="font-mono text-xs text-[var(--text-soft)] hover:text-[var(--text)] transition-colors px-2 py-1 border border-[var(--border)] hover:border-[var(--color-primary)] flex items-center justify-center"
             aria-label="Toggle theme"
           >
             {theme === "dark" ? <Sun className="w-3.5 h-3.5" /> : <Moon className="w-3.5 h-3.5" />}

@@ -15,7 +15,7 @@ export default function MobileHeader() {
     <>
       <header className="lg:hidden fixed top-0 w-full z-50 bg-[var(--surface)] border-b border-[var(--border)] px-6 py-4 flex items-center justify-between">
         <Link href="/">
-          <div className="[font-family:var(--font-gotfridus)] uppercase text-xl text-[var(--text)] leading-none tracking-tight cursor-pointer hover:text-[var(--accent-green)] transition-colors">
+          <div className="[font-family:var(--font-gotfridus)] uppercase text-xl text-[var(--text)] leading-none tracking-tight cursor-pointer hover:text-[var(--color-primary)] transition-colors">
             RDS
           </div>
         </Link>
@@ -23,13 +23,13 @@ export default function MobileHeader() {
         <div className="flex items-center gap-4">
           <button
             onClick={toggleTheme}
-            className="text-[var(--text-soft)] hover:text-[var(--accent-green)] transition-colors"
+            className="text-[var(--text-soft)] hover:text-[var(--color-primary)] transition-colors"
           >
             {theme === "dark" ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
           </button>
           <button
             onClick={() => setIsOpen(true)}
-            className="text-[var(--text-soft)] hover:text-[var(--accent-magenta)] transition-colors"
+            className="text-[var(--text-soft)] hover:text-[var(--color-secondary)] transition-colors"
           >
             <Menu className="w-6 h-6" />
           </button>
@@ -47,13 +47,13 @@ export default function MobileHeader() {
           >
             <div className="flex justify-between items-center mb-12">
                <Link href="/">
-                 <div className="[font-family:var(--font-gotfridus)] uppercase text-xl text-[var(--text)] leading-none tracking-tight hover:text-[var(--accent-green)] transition-colors cursor-pointer">
+                 <div className="[font-family:var(--font-gotfridus)] uppercase text-xl text-[var(--text)] leading-none tracking-tight hover:text-[var(--color-primary)] transition-colors cursor-pointer">
                     ALTAIR STAR
                   </div>
                </Link>
                 <button 
                   onClick={() => setIsOpen(false)}
-                  className="text-[var(--text-soft)] hover:text-[var(--accent-magenta)]"
+                  className="text-[var(--text-soft)] hover:text-[var(--color-secondary)]"
                 >
                   <X className="w-8 h-8" />
                 </button>
@@ -70,7 +70,7 @@ export default function MobileHeader() {
                   key={item.id}
                   href={item.id}
                   onClick={() => setIsOpen(false)}
-                  className="text-[var(--text)] hover:text-[var(--accent-green)] transition-colors border-b border-[var(--border)] pb-4"
+                  className="text-[var(--text)] hover:text-[var(--color-primary)] transition-colors border-b border-[var(--border)] pb-4"
                 >
                   {item.label}
                 </Link>

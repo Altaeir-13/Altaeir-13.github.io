@@ -15,10 +15,10 @@ export default function ContactPage() {
     <div className="w-full h-full flex flex-col pt-20 lg:pt-0 animate-in fade-in duration-500 bg-transparent">
       <section className="py-32 px-6 lg:px-16 min-h-screen text-[var(--text)]">
         <div className="max-w-3xl">
-          <div className="font-mono text-sm md:text-base text-[var(--accent-green)] mb-8 flex flex-col md:flex-row md:items-center gap-2">
+          <div className="font-mono text-sm md:text-base text-[var(--color-primary)] mb-8 flex flex-col md:flex-row md:items-center gap-2">
             <span>randerson@portfolio:~$</span>
             <span className="text-[var(--text)]">contact --open</span>
-            <span className="inline-block w-2 h-4 bg-[var(--accent-green)] animate-pulse" />
+            <span className="inline-block w-2 h-4 bg-[var(--color-primary)] animate-pulse" />
           </div>
 
           <p className="font-mono text-sm md:text-base text-[var(--text-soft)] mb-12 leading-relaxed">
@@ -35,10 +35,10 @@ export default function ContactPage() {
           </div>
           
           <div className="mt-16 pt-8 border-t border-[var(--border-strong)] flex flex-wrap gap-6 font-mono text-xs">
-             <a href="https://github.com/Altaeir-13" target="_blank" rel="noopener noreferrer" className="text-[var(--text-muted)] hover:text-[var(--accent-green)] transition-colors">
+             <a href="https://github.com/Altaeir-13" target="_blank" rel="noopener noreferrer" className="text-[var(--text-muted)] hover:text-[var(--color-primary)] transition-colors">
                [github]
              </a>
-             <a href="https://linkedin.com/in/randersonsousa" target="_blank" rel="noopener noreferrer" className="text-[var(--text-muted)] hover:text-[var(--accent-green)] transition-colors">
+             <a href="https://linkedin.com/in/randersonsousa" target="_blank" rel="noopener noreferrer" className="text-[var(--text-muted)] hover:text-[var(--color-primary)] transition-colors">
                [linkedin]
              </a>
           </div>
